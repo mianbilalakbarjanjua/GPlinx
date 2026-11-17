@@ -7,13 +7,12 @@
 <title>GPlinx Admin</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='f' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%23ff8a3d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='40' height='40' rx='12' fill='url(%23f)'/%3E%3Cpath d='M27.2 13.6A9.2 9.2 0 1 0 29.2 20.6H21.4' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
-:root{--bg:#f6f5fb;--c:#fff;--t:#17132b;--m:#6a647f;--b:#e4e0f3;--p:#7c3aed;--o:#ff8a3d;--ok:#12805c;--er:#c0262d;--wn:#a15c00;--g:linear-gradient(135deg,#7c3aed,#ff8a3d);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root{--bg:#0f0c1f;--c:#181432;--t:#f1eefc;--m:#a39dbd;--b:#2a2550;--ok:#3ddba3;--er:#ff7b82;--wn:#ffc15e}}
+:root{--bg:#F3ECD8;--c:rgba(255,255,255,.82);--t:#1E3C72;--m:#4F6591;--b:rgba(30,60,114,.16);--p:#3B93B0;--o:#FFB752;--ok:#12805c;--er:#C21616;--wn:#8a5a00;--bt:#15294f;--g:linear-gradient(135deg,#FFB752 0%,#FFB752 38%,#FD1D1D 150%);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}[hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--t);font:15px/1.5 system-ui,"Segoe UI",sans-serif}
+body{margin:0;color:var(--t);font:15px/1.55 "Times New Roman",Times,"Liberation Serif",serif;background:radial-gradient(60% 50% at 8% 6%,rgba(242,166,184,.5),transparent 70%),radial-gradient(55% 45% at 95% 12%,rgba(246,211,101,.45),transparent 70%),radial-gradient(60% 50% at 80% 96%,rgba(253,160,133,.35),transparent 70%),#F3ECD8;background-attachment:fixed}
 a{color:var(--p)}
 h1,h2,h3{margin:0 0 .6em;line-height:1.2}h2{font-size:22px}h3{font-size:16px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;background:#120f26;color:#fff;position:sticky;top:0;z-index:5}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;background:#1E3C72;color:#F3ECD8;position:sticky;top:0;z-index:5}
 .top b{font-size:18px}.top b span{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
 .top small{opacity:.7}
 .wrap{display:grid;grid-template-columns:200px 1fr;gap:18px;max-width:1280px;margin:0 auto;padding:18px}
@@ -25,12 +24,12 @@ h1,h2,h3{margin:0 0 .6em;line-height:1.2}h2{font-size:22px}h3{font-size:16px}
 .badge{background:var(--er);color:#fff;border-radius:99px;font-size:12px;padding:0 7px;min-width:20px;text-align:center}
 .card{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:14px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
-.stat{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:14px}.stat b{display:block;font-size:24px}.stat span{color:var(--m);font-size:13px}
+.stat{backdrop-filter:blur(8px);background:var(--c);border:1px solid var(--b);border-radius:14px;padding:14px}.stat b{display:block;font-size:24px}.stat span{color:var(--m);font-size:13px}
 .tw{overflow-x:auto;border:1px solid var(--b);border-radius:12px;background:var(--c)}
 table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--b);vertical-align:top}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--m);white-space:nowrap}tr:last-child td{border-bottom:0}
-.btn{border:0;background:var(--g);color:#fff;padding:8px 14px;border-radius:9px;font:inherit;font-weight:700;cursor:pointer}
-.btn.s{padding:5px 10px;font-size:13px}.btn.g{background:transparent;color:var(--t);border:1px solid var(--b)}.btn.r{background:var(--er)}.btn.k{background:var(--ok)}
+.btn{border:0;background:var(--g);color:var(--bt);padding:8px 14px;border-radius:9px;font:inherit;font-weight:700;cursor:pointer}
+.btn.s{padding:5px 10px;font-size:13px}.btn.g{background:transparent;color:var(--t);border:1px solid var(--b)}.btn.r{background:var(--er);color:#fff}.btn.k{background:var(--ok);color:#fff}
 .btn:disabled{opacity:.5;cursor:default}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
 input,select,textarea{font:inherit;color:var(--t);background:var(--bg);border:1px solid var(--b);border-radius:9px;padding:8px 10px;max-width:100%}
@@ -38,7 +37,7 @@ label{display:block;font-size:13px;color:var(--m);margin:10px 0 4px}
 .pill{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:700;border:1px solid var(--b)}
 .pill.ok{color:var(--ok)}.pill.er{color:var(--er)}.pill.wn{color:var(--wn)}
 .m{color:var(--m)}.sm{font-size:13px}.mono{font-family:ui-monospace,Consolas,monospace;word-break:break-all}
-.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);padding:11px 18px;border-radius:12px;background:#17132b;color:#fff;z-index:20;max-width:92vw;box-shadow:0 10px 30px rgba(0,0,0,.35)}.toast.er{background:var(--er)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);padding:11px 18px;border-radius:12px;background:#1E3C72;color:#fff;z-index:20;max-width:92vw;box-shadow:0 10px 30px rgba(0,0,0,.35)}.toast.er{background:var(--er)}
 .auth{max-width:380px;margin:9vh auto;padding:0 18px}.auth .card{padding:24px}
 .msg{white-space:pre-wrap;border:1px solid var(--b);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--bg)}
 .msg b{font-size:12px;text-transform:uppercase;color:var(--m)}
@@ -55,6 +54,8 @@ const $=id=>document.getElementById(id);
 const E=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const M=n=>'$'+Number(n||0).toFixed(2),D=t=>t?new Date(t).toLocaleString():'';
 const TABS=[['ov','Overview'],['sites','Websites'],['topups','Top-ups'],['payouts','Payouts'],['orders','Orders'],['users','Users'],['ledger','Ledger'],['settings','Settings'],['log','Activity log']];
+const ML={paypal:'PayPal',usdt:'USDT',bank_pk:'Pakistani bank',bank_intl:'International bank',jazzcash:'JazzCash',easypaisa:'Easypaisa',card:'Card'};
+const KEYS=['paypal_email','usdt_address','usdt_network','bank_pk_details','bank_intl_details','jazzcash_details','easypaisa_details','card_link','pkr_rate','payment_note'];
 const STAGE={1:'Waiting for publisher',2:'In progress',3:'Article ready, waiting for link',4:'Delivered, in review',5:'Completed',6:'Refunded'};
 let view='boot',tab='ov',data=null,ov=null,detail=null,busy=false,mfaOn=false,enrollInfo=null,adminEmail='',
  filt={sites:'pending',topups:'pending',payouts:'pending',orders:'open'},qs={users:'',ledger:''},loginErr='',settingsData={};
@@ -135,12 +136,13 @@ function vSites(){const rows=list(data).map(s=>[
  <p class="m sm">Before approving: open the website, and check that the verification code above is on it (or that you trust the owner).</p>`}
 
 function vTopups(){const rows=list(data).map(t=>[
- '#'+t.id,`${E(t.name||'')}<br><span class="m sm">${E(t.email||'')}</span>`,'<b>'+M(t.amount)+'</b>',E(t.method==='usdt'?'USDT':'PayPal'),
- `<span class="mono sm">${E(t.reference)}</span>`,pill(t.status==='pending'?'Waiting':t.status==='approved'?'Credited':'Rejected',t.status==='approved'?'ok':t.status==='pending'?'wn':'er'),D(t.created_at),
+ '#'+t.id,`${E(t.name||'')} <span class="m sm">@${E(t.username||'')}</span><br><span class="m sm">${E(t.email||'')}</span>`,'<b>'+M(t.amount)+'</b>',E(ML[t.method]||t.method),
+ `<span class="mono sm">${E(t.reference)}</span>`,t.slip_path?btn('View slip','slip',`data-p="${E(t.slip_path)}"`,'g'):'<span class="m sm">none</span>',
+ pill(t.status==='pending'?'Waiting':t.status==='approved'?'Credited':'Rejected',t.status==='approved'?'ok':t.status==='pending'?'wn':'er'),D(t.created_at),
  t.status==='pending'?`<div class="row" style="margin:0">${btn('Confirm','topup',`data-id="${t.id}" data-v="1" data-a="${t.amount}" data-e="${E(t.email||'')}"`,'k')}${btn('Reject','topup',`data-id="${t.id}" data-v="0" data-a="${t.amount}" data-e="${E(t.email||'')}"`,'r')}</div>`:'']);
  return `<h2>Top-ups</h2><div class="row">${sel('f_topups',filt.topups,[['pending','Waiting'],['approved','Credited'],['rejected','Rejected'],['all','All']])}</div>
- ${tbl(['#','User','Amount','Method','Transaction ID','Status','Sent','Actions'],rows)}
- <p class="m sm">Press Confirm only after you have seen the payment arrive in your PayPal (shown as completed) or on the blockchain for the same amount. This adds the money to the user's wallet at once.</p>`}
+ ${tbl(['#','User','Amount','Method','Reference','Slip','Status','Sent','Actions'],rows)}
+ <p class="m sm">Press Confirm only after you have seen the payment arrive (PayPal shown as completed, the bank or wallet balance, or the blockchain) for the same amount. For bank, JazzCash and Easypaisa the user pays in PKR: compare with the USD amount using your rate. Open the slip picture to check the details. Confirm adds the money to the user's wallet at once.</p>`}
 
 function vPayouts(){const rows=list(data).map(t=>[
  '#'+t.id,`${E(t.name||'')}<br><span class="m sm">${E(t.email||'')}</span>`,'<b>'+M(t.amount)+'</b>',E(t.method),
@@ -154,7 +156,7 @@ function vPayouts(){const rows=list(data).map(t=>[
 function vOrders(){
  if(detail)return vDetail();
  const rows=list(data).map(o=>[
- '#'+o.id,E(o.domain),`<span class="sm">${E(o.buyer_email||'')}</span>`,`<span class="sm">${E(o.seller_email||'')}</span>`,
+ '#'+o.id,E(o.domain),`<span class="sm">@${E(o.buyer_username||'')}<br>${E(o.buyer_email||'')}</span>`,`<span class="sm">@${E(o.seller_username||'')}<br>${E(o.seller_email||'')}</span>`,
  E(STAGE[o.stage]||o.stage)+(o.issue_open?'<br>'+pill('Problem: '+(o.issue_type||'open'),'er'):''),M(o.base*1.1)+`<br><span class="m sm">publisher ${M(o.base*0.9)}</span>`,
  o.stage<4?`<span class="sm">due ${D(o.deadline)}</span>`:o.stage===4?`<span class="sm">auto-release ${D(o.release_at)}</span>`:'',btn('Open','order',`data-id="${o.id}"`,'g')]);
  return `<h2>Orders</h2><div class="row">${sel('f_orders',filt.orders,[['open','In progress'],['issues','With open problem'],['done','Completed'],['refunded','Refunded'],['all','All']])}</div>
@@ -173,12 +175,12 @@ function vDetail(){const o=detail.order||{},ms=list(detail.messages);
  <div class="card"><h3>Messages (${ms.length})</h3>${ms.length?ms.map(x=>`<div class="msg"><b>${E(x.sender)}</b> · <span class="m sm">${D(x.created_at)}</span>\n${E(x.body)}</div>`).join(''):'<p class="m">No messages.</p>'}</div>`}
 
 function vUsers(){const rows=list(data).map(u=>[
- `<b>${E(u.name||'')}</b><br><span class="m sm">${E(u.email||'')}</span>`,
+ `<b>${E(u.name||'')}</b> <span class="m sm">@${E(u.username||'')}</span><br><span class="m sm">${E(u.email||'')}</span>`,
  pill(u.role,u.role==='admin'?'wn':'')+(u.suspended?' '+pill('Suspended','er'):''),E(u.country||''),
  `<b>${M(u.balance)}</b><br><span class="m sm">earned ${M(u.earnings)}</span>`,
  u.pay_method?`<span class="sm">${E(u.pay_method)}<br><span class="mono">${E(u.pay_account||'')}</span></span>`:'<span class="m sm">none</span>',D(u.created_at),
  `<div class="row" style="margin:0">${btn('Balance','adj',`data-id="${E(u.id)}" data-e="${E(u.email||'')}"`,'g')}${btn('Role','role',`data-id="${E(u.id)}" data-e="${E(u.email||'')}" data-r="${E(u.role)}"`,'g')}${btn(u.suspended?'Reactivate':'Suspend','susp',`data-id="${E(u.id)}" data-e="${E(u.email||'')}" data-v="${u.suspended?0:1}"`,u.suspended?'k':'r')}</div>`]);
- return `<h2>Users</h2><div class="row"><input id="q_users" placeholder="Search by email or name" value="${E(qs.users)}"><button class="btn s" data-do="search" data-t="users">Search</button></div>
+ return `<h2>Users</h2><div class="row"><input id="q_users" placeholder="Search by email, name or username" value="${E(qs.users)}"><button class="btn s" data-do="search" data-t="users">Search</button></div>
  ${tbl(['User','Role','Country','Wallet','Payout details','Joined','Actions'],rows)}`}
 
 function vLedger(){const rows=list(data).map(l=>['#'+l.id,E(l.email||''),`<b style="color:var(${Number(l.amount)<0?'--er':'--ok'})">${Number(l.amount)<0?'-':'+'}${M(Math.abs(l.amount))}</b>`,E(l.kind),l.order_id?'#'+l.order_id:'',E(l.note||''),D(l.created_at)]);
@@ -188,10 +190,20 @@ function vLedger(){const rows=list(data).map(l=>['#'+l.id,E(l.email||''),`<b sty
 function vLog(){return `<h2>Activity log</h2>${tbl(['Time','Admin','Action','Details'],list(data).map(l=>[D(l.created_at),E(l.admin_email||''),E(l.action),E(l.detail||'')]))}<p class="m sm">Every admin action is recorded here.</p>`}
 
 function vSettings(){const s=settingsData||{};
- const f=(k,l,ph)=>`<label>${l}</label><input id="st_${k}" style="width:100%;max-width:520px" placeholder="${ph}" value="${E(s[k]||'')}">`;
+ const f=(k,l,ph)=>`<label>${l}</label><input id="st_${k}" style="width:100%;max-width:560px" placeholder="${ph}" value="${E(s[k]||'')}">`;
+ const ta=(k,l,ph)=>`<label>${l}</label><textarea id="st_${k}" rows="4" style="width:100%;max-width:560px" placeholder="${ph}">${E(s[k]||'')}</textarea>`;
  return `<h2>Settings</h2><div class="card"><h3>Where customers send their money</h3>
- <p class="m sm">These details are shown to customers on the Add funds page. Double-check every character.</p>
- ${f('paypal_email','PayPal email','you@example.com')}${f('usdt_address','USDT wallet address','Your wallet address')}${f('usdt_network','USDT network (must match your wallet)','TRC20')}${f('payment_note','Note shown to customers (optional)','Example: 1 USD = 1 USDT')}
+ <p class="m sm">These details are shown to customers on the Add funds page. A method with an empty box is shown as "not available yet". Double-check every character.</p>
+ <h3 style="margin-top:14px">PayPal and USDT</h3>${f('paypal_email','PayPal email','you@example.com')}${f('usdt_address','USDT wallet address','Your wallet address')}${f('usdt_network','USDT network (must match your wallet)','TRC20')}
+ <h3 style="margin-top:14px">Bank accounts, JazzCash and Easypaisa</h3>
+ ${ta('bank_pk_details','Pakistani bank account (shown to customers as written)','Bank name\nAccount title\nAccount number\nIBAN')}
+ ${ta('bank_intl_details','International bank account (USD)','Bank name\nAccount holder\nIBAN / account number\nSWIFT / BIC')}
+ ${ta('jazzcash_details','JazzCash account','Account title\nMobile number')}${ta('easypaisa_details','Easypaisa account','Account title\nMobile number')}
+ ${f('pkr_rate','Rupee rate: how many PKR for 1 USD (used to show customers the amount to send)','Example: 280')}
+ <h3 style="margin-top:14px">Card payments</h3>
+ <p class="m sm">Cards cannot be taken by this site itself. Create a payment link with a card payment company that works for you, paste its secure https link here, and customers will see a "Pay by card" button. They pay there and send you the receipt number; you confirm the top-up as usual.</p>
+ ${f('card_link','Card payment page link (must start with https://)','https://...')}
+ ${ta('payment_note','Note shown to customers on the Add funds page (optional)','Example: Payments are confirmed within a few hours.')}
  <div class="row" style="margin-top:14px"><button class="btn" data-do="saveset">Save settings</button></div></div>
  <div class="card"><h3>Two-step verification (strongly recommended)</h3>
  ${mfaOn?'<p>'+pill('On','ok')+' This admin account needs a code from your authenticator app at every login.</p>'
@@ -227,6 +239,7 @@ const DO={
   act('admin_update_site',{p_id:s.id,p_price:+pr,p_dr:Math.round(+dr),p_traffic:Math.round(+tr),p_hours:Math.round(+hr),p_niche:ni},'Website updated.')},
  topup:d=>act('admin_topup_decide',{p_id:+d.id,p_approve:d.v==='1'},d.v==='1'?'Top-up confirmed and credited.':'Top-up rejected.',d.v==='1'?`Confirm that you received ${M(d.a)} from ${d.e}? It will be added to their wallet now.`:`Reject this top-up of ${M(d.a)}?`),
  payout:d=>act('admin_payout_decide',{p_id:+d.id,p_paid:d.v==='1'},d.v==='1'?'Marked as paid.':'Payout rejected and returned to the wallet.',d.v==='1'?`Press OK only if you already sent ${M(d.a)}.`:`Reject this payout and return ${M(d.a)} to the publisher's wallet?`),
+ slip:async d=>{const w=window.open('','_blank');try{const r=await sb.storage.from('slips').createSignedUrl(d.p,300);if(r.error||!r.data){if(w)w.close();toast('Could not open the slip: '+(r.error?r.error.message:'unknown error'),true);return}if(w)w.location.href=r.data.signedUrl;else window.location.href=r.data.signedUrl}catch(x){if(w)w.close();toast('Could not open the slip.',true)}},
  order:async d=>{const r=await rpc('admin_order_detail',{p_id:+d.id});if(r&&r!==true){detail=r;render()}},
  release:d=>act('admin_release_order',{p_id:+d.id},'Payment released to the publisher.','Release the payment to the publisher now?'),
  refund:d=>act('admin_refund_order',{p_id:+d.id},'Order cancelled and the buyer was refunded.','Cancel this order and refund the buyer in full?'),
@@ -235,7 +248,7 @@ const DO={
  role:d=>{const r=prompt('New role for '+d.e+' (buyer, seller or admin). Current: '+d.r,d.r);if(r===null)return;
   act('admin_set_role',{p_user:d.id,p_role:r.trim().toLowerCase()},'Role changed.',`Change ${d.e} to ${r}?`)},
  susp:d=>act('admin_set_suspended',{p_user:d.id,p_flag:d.v==='1'},d.v==='1'?'Account suspended.':'Account reactivated.',d.v==='1'?`Suspend ${d.e}? They will not be able to order, top up, withdraw or list websites.`:null),
- saveset:async()=>{let ok=true;for(const k of ['paypal_email','usdt_address','usdt_network','payment_note']){const r=await rpc('admin_set_setting',{p_key:k,p_value:$('st_'+k).value.trim()});if(r===null){ok=false;break}}if(ok){toast('Settings saved.');await load()}},
+ saveset:async()=>{const cl=$('st_card_link').value.trim(),pr=$('st_pkr_rate').value.trim();if(cl&&!/^https:\/\//.test(cl)){toast('The card payment link must start with https://',true);return}if(pr&&!(Number(pr)>0)){toast('The rupee rate must be a number, for example 280',true);return}let ok=true;for(const k of KEYS){const r=await rpc('admin_set_setting',{p_key:k,p_value:$('st_'+k).value.trim()});if(r===null){ok=false;break}}if(ok){toast('Settings saved.');await load()}},
  enroll:async()=>{try{const r=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'GPlinx admin '+Date.now()});if(r.error){toast(r.error.message,true);return}
    enrollInfo={id:r.data.id,qr:r.data.totp.qr_code,secret:r.data.totp.secret};render()}catch(x){toast('Could not start the setup.',true)}},
  enrollok:async()=>{const code=$('en_c').value.trim();if(!enrollInfo)return;try{const r=await sb.auth.mfa.challengeAndVerify({factorId:enrollInfo.id,code});
