@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>GPlinx Admin</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='f' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%23ff8a3d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='40' height='40' rx='12' fill='url(%23f)'/%3E%3Cpath d='M27.2 13.6A9.2 9.2 0 1 0 29.2 20.6H21.4' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#F3ECD8;--c:rgba(255,255,255,.82);--t:#1E3C72;--m:#4F6591;--b:rgba(30,60,114,.16);--p:#3B93B0;--o:#FFB752;--ok:#12805c;--er:#C21616;--wn:#8a5a00;--bt:#15294f;--g:linear-gradient(135deg,#FFB752 0%,#FFB752 38%,#FD1D1D 150%);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;color:var(--t);font:15px/1.55 "Times New Roman",Times,"Liberation Serif",serif;background:radial-gradient(60% 50% at 8% 6%,rgba(242,166,184,.5),transparent 70%),radial-gradient(55% 45% at 95% 12%,rgba(246,211,101,.45),transparent 70%),radial-gradient(60% 50% at 80% 96%,rgba(253,160,133,.35),transparent 70%),#F3ECD8;background-attachment:fixed}
+a{color:var(--p)}
+h1,h2,h3{margin:0 0 .6em;line-height:1.2}h2{font-size:22px}h3{font-size:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;background:#1E3C72;color:#F3ECD8;position:sticky;top:0;z-index:5}
+.top b{font-size:18px}.top b span{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.top small{opacity:.7}
+.wrap{display:grid;grid-template-columns:200px 1fr;gap:18px;max-width:1280px;margin:0 auto;padding:18px}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}}
+.side{display:flex;flex-direction:column;gap:4px}
+@media(max-width:820px){.side{flex-direction:row;flex-wrap:wrap}}
+.side button{display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left;border:1px solid transparent;background:transparent;color:var(--t);padding:9px 12px;border-radius:10px;font:inherit;cursor:pointer}
+.side button:hover{background:var(--c)}.side button.on{background:var(--c);border-color:var(--b);font-weight:700}
+.badge{background:var(--er);color:#fff;border-radius:99px;font-size:12px;padding:0 7px;min-width:20px;text-align:center}
+.card{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
+.stat{backdrop-filter:blur(8px);background:var(--c);border:1px solid var(--b);border-radius:14px;padding:14px}.stat b{display:block;font-size:24px}.stat span{color:var(--m);font-size:13px}
+.tw{overflow-x:auto;border:1px solid var(--b);border-radius:12px;background:var(--c)}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--b);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--m);white-space:nowrap}tr:last-child td{border-bottom:0}
+.btn{border:0;background:var(--g);color:var(--bt);padding:8px 14px;border-radius:9px;font:inherit;font-weight:700;cursor:pointer}
+.btn.s{padding:5px 10px;font-size:13px}.btn.g{background:transparent;color:var(--t);border:1px solid var(--b)}.btn.r{background:var(--er);color:#fff}.btn.k{background:var(--ok);color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+input,select,textarea{font:inherit;color:var(--t);background:var(--bg);border:1px solid var(--b);border-radius:9px;padding:8px 10px;max-width:100%}
+label{display:block;font-size:13px;color:var(--m);margin:10px 0 4px}
+.pill{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:700;border:1px solid var(--b)}
+.pill.ok{color:var(--ok)}.pill.er{color:var(--er)}.pill.wn{color:var(--wn)}
+.m{color:var(--m)}.sm{font-size:13px}.mono{font-family:ui-monospace,Consolas,monospace;word-break:break-all}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);padding:11px 18px;border-radius:12px;background:#1E3C72;color:#fff;z-index:20;max-width:92vw;box-shadow:0 10px 30px rgba(0,0,0,.35)}.toast.er{background:var(--er)}
+.auth{max-width:380px;margin:9vh auto;padding:0 18px}.auth .card{padding:24px}
+.msg{white-space:pre-wrap;border:1px solid var(--b);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--bg)}
+.msg b{font-size:12px;text-transform:uppercase;color:var(--m)}
+</style>
+</head>
+<body>
+<div id="root"><div class="auth"><p class="m">Loading…</p></div></div>
+<div id="toast" class="toast" hidden></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+const SB_URL='https://gpewwafexrhvrxflwkwy.supabase.co',SB_KEY='sb_publishable_obGV7y7avYlZuT6hhPczoQ_YGWOoauL';
+const sb=(window.supabase&&window.supabase.createClient)?window.supabase.createClient(SB_URL,SB_KEY):null;
+const $=id=>document.getElementById(id);
+const E=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const M=n=>'$'+Number(n||0).toFixed(2),D=t=>t?new Date(t).toLocaleString():'';
+const TABS=[['ov','Overview'],['sites','Websites'],['topups','Top-ups'],['payouts','Payouts'],['orders','Orders'],['users','Users'],['ledger','Ledger'],['settings','Settings'],['log','Activity log']];
+const ML={paypal:'PayPal',usdt:'USDT',bank_pk:'Pakistani bank',bank_intl:'International bank',jazzcash:'JazzCash',easypaisa:'Easypaisa',card:'Card'};
+const KEYS=['paypal_email','usdt_address','usdt_network','bank_pk_details','bank_intl_details','jazzcash_details','easypaisa_details','card_link','pkr_rate','payment_note'];
+const STAGE={1:'Waiting for publisher',2:'In progress',3:'Article ready, waiting for link',4:'Delivered, in review',5:'Completed',6:'Refunded'};
+let view='boot',tab='ov',data=null,ov=null,detail=null,busy=false,mfaOn=false,enrollInfo=null,adminEmail='',
+ filt={sites:'pending',topups:'pending',payouts:'pending',orders:'open'},qs={users:'',ledger:''},loginErr='',settingsData={};
+let tt=null;
+function toast(t,bad){const e=$('toast');e.textContent=t;e.className='toast'+(bad?' er':'');e.hidden=false;clearTimeout(tt);tt=setTimeout(()=>e.hidden=true,bad?6000:3200)}
+async function rpc(fn,args){if(!sb){toast('The service is not reachable. Refresh the page.',true);return null}
+ try{const r=await sb.rpc(fn,args||{});if(r.error){toast(r.error.message||'Something went wrong',true);return null}return r.data===null?true:r.data}catch(x){toast('Network problem. Try again.',true);return null}}
+async function act(fn,args,ok,ask){if(ask&&!confirm(ask))return;const r=await rpc(fn,args);if(r!==null){toast(ok||'Done');detail=null;await load()}}
+
+/* ---------- start-up and login ---------- */
+async function start(){
+ if(!sb){view='login';loginErr='The service is not reachable. Refresh the page.';render();return}
+ try{const s=await sb.auth.getSession();if(!s.data||!s.data.session){view='login';render();return}adminEmail=s.data.session.user.email||''}catch(x){view='login';render();return}
+ await gate()}
+async function gate(){
+ try{const a=await sb.auth.mfa.getAuthenticatorAssuranceLevel();
+  if(a.data&&a.data.currentLevel==='aal1'&&a.data.nextLevel==='aal2'){view='mfa';render();return}
+  mfaOn=!!(a.data&&a.data.currentLevel==='aal2')}catch(x){}
+ const r=await sb.rpc('is_admin');
+ if(r.error||r.data!==true){view='denied';render();return}
+ view='app';await load()}
+async function doLogin(){const e=$('lg_e').value.trim(),p=$('lg_p').value;loginErr='';
+ if(!e||!p){loginErr='Enter your email and password.';render();return}
+ const r=await sb.auth.signInWithPassword({email:e,password:p});
+ if(r.error){loginErr='Wrong email or password.';render();return}
+ adminEmail=e;await gate()}
+async function doMfa(){const code=$('mf_c').value.trim();loginErr='';
+ try{const f=await sb.auth.mfa.listFactors();const fac=f.data&&f.data.totp&&f.data.totp[0];
+  if(!fac){loginErr='No authenticator found for this account.';render();return}
+  const ch=await sb.auth.mfa.challenge({factorId:fac.id});if(ch.error){loginErr=ch.error.message;render();return}
+  const v=await sb.auth.mfa.verify({factorId:fac.id,challengeId:ch.data.id,code});
+  if(v.error){loginErr='That code is wrong or expired. Try the new code.';render();return}
+  await gate()}catch(x){loginErr='Could not verify the code. Try again.';render()}}
+async function doLogout(){try{await sb.auth.signOut()}catch(x){}view='login';data=null;ov=null;detail=null;render()}
+
+/* ---------- loading data ---------- */
+async function load(){if(view!=='app')return;busy=true;render();
+ const o=await rpc('admin_overview');if(o&&o!==true)ov=o;
+ data=null;
+ if(tab==='sites')data=await rpc('admin_list_sites',{p_filter:filt.sites});
+ else if(tab==='topups')data=await rpc('admin_list_topups',{p_status:filt.topups});
+ else if(tab==='payouts')data=await rpc('admin_list_payouts',{p_status:filt.payouts});
+ else if(tab==='orders')data=await rpc('admin_list_orders',{p_filter:filt.orders});
+ else if(tab==='users')data=await rpc('admin_list_users',{p_q:qs.users});
+ else if(tab==='ledger')data=await rpc('admin_list_ledger',{p_q:qs.ledger});
+ else if(tab==='log')data=await rpc('admin_list_log');
+ else if(tab==='settings'){const s=await rpc('admin_get_settings');settingsData=(s&&s!==true)?s:{}}
+ busy=false;render()}
+
+/* ---------- views ---------- */
+const tbl=(head,rows)=>rows.length?`<div class="tw"><table><thead><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'<div class="card m">Nothing here.</div>';
+const sel=(id,val,opts)=>`<select id="${id}" data-filter="${id}">${opts.map(o=>`<option value="${o[0]}" ${o[0]===val?'selected':''}>${o[1]}</option>`).join('')}</select>`;
+const pill=(t,k)=>`<span class="pill ${k||''}">${E(t)}</span>`;
+const btn=(label,doo,attrs,cls)=>`<button class="btn s ${cls||''}" data-do="${doo}" ${attrs||''}>${label}</button>`;
+const list=a=>Array.isArray(a)?a:[];
+
+function vOverview(){if(!ov)return '<div class="card m">Loading…</div>';
+ const st=(n,l)=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`;
+ const todo=[];
+ if(ov.sites_pending>0)todo.push(`<li><a href="#" data-do="tab" data-v="sites">${ov.sites_pending} website(s) waiting for approval</a></li>`);
+ if(ov.topups_pending>0)todo.push(`<li><a href="#" data-do="tab" data-v="topups">${ov.topups_pending} top-up(s) to confirm (${M(ov.topups_pending_amount)})</a></li>`);
+ if(ov.payouts_pending>0)todo.push(`<li><a href="#" data-do="tab" data-v="payouts">${ov.payouts_pending} payout(s) to send (${M(ov.payouts_pending_amount)})</a></li>`);
+ if(ov.issues_open>0)todo.push(`<li><a href="#" data-do="tab" data-v="orders" data-f="issues">${ov.issues_open} order(s) with an open problem</a></li>`);
+ return `<h2>Overview</h2><div class="card"><h3>Needs your attention</h3>${todo.length?`<ul>${todo.join('')}</ul>`:'<p class="m">Nothing is waiting. All clear.</p>'}</div>
+ <div class="grid">${st(ov.users,'Users')}${st(ov.buyers,'Buyers')}${st(ov.sellers,'Publishers')}${st(ov.sites_live,'Live websites')}${st(ov.orders_total,'Orders in total')}${st(ov.orders_open,'Orders in progress')}</div>
+ <div class="grid">${st(M(ov.escrow),'Held in escrow now')}${st(M(ov.wallets),'Total in user wallets')}${st(M(ov.revenue),'Platform fees earned (completed orders)')}</div>
+ <p class="m sm">Money owed to users is the sum of all wallets plus escrow. Keep at least this much in your PayPal and USDT accounts combined.</p>`}
+
+function vSites(){const rows=list(data).map(s=>[
+ `<b>${E(s.domain)}</b><br><span class="m sm">${E(s.niche||'')} · ${E(s.language||'')} · ${E(s.country||'')}</span>`,
+ E(s.owner_email||''),`DR ${s.dr}<br><span class="m sm">${Number(s.traffic).toLocaleString()} visits</span>`,
+ M(s.price)+`<br><span class="m sm">${s.delivery_hours} h</span>`,
+ (s.approved?pill('Live','ok'):pill('Pending','wn'))+(s.check_requested&&!s.approved?'<br>'+pill('Check requested','er'):''),
+ `<span class="mono sm">${E(s.verify_code||'')}</span>`,D(s.created_at),
+ `<div class="row" style="margin:0">${s.approved?btn('Hide','siteok',`data-id="${E(s.id)}" data-v="0"`,'g'):btn('Approve','siteok',`data-id="${E(s.id)}" data-v="1"`,'k')}${btn('Edit','siteedit',`data-i="${E(s.id)}"`,'g')}${btn('Delete','sitedel',`data-id="${E(s.id)}" data-n="${E(s.domain)}"`,'r')}</div>`]);
+ return `<h2>Websites</h2><div class="row">${sel('f_sites',filt.sites,[['pending','Waiting for approval'],['live','Live'],['all','All']])}</div>
+ ${tbl(['Website','Owner','Quality','Price','Status','Code','Added','Actions'],rows)}
+ <p class="m sm">Before approving: open the website, and check that the verification code above is on it (or that you trust the owner).</p>`}
+
+function vTopups(){const rows=list(data).map(t=>[
+ '#'+t.id,`${E(t.name||'')} <span class="m sm">@${E(t.username||'')}</span><br><span class="m sm">${E(t.email||'')}</span>`,'<b>'+M(t.amount)+'</b>',E(ML[t.method]||t.method),
+ `<span class="mono sm">${E(t.reference)}</span>`,t.slip_path?btn('View slip','slip',`data-p="${E(t.slip_path)}"`,'g'):'<span class="m sm">none</span>',
+ pill(t.status==='pending'?'Waiting':t.status==='approved'?'Credited':'Rejected',t.status==='approved'?'ok':t.status==='pending'?'wn':'er'),D(t.created_at),
+ t.status==='pending'?`<div class="row" style="margin:0">${btn('Confirm','topup',`data-id="${t.id}" data-v="1" data-a="${t.amount}" data-e="${E(t.email||'')}"`,'k')}${btn('Reject','topup',`data-id="${t.id}" data-v="0" data-a="${t.amount}" data-e="${E(t.email||'')}"`,'r')}</div>`:'']);
+ return `<h2>Top-ups</h2><div class="row">${sel('f_topups',filt.topups,[['pending','Waiting'],['approved','Credited'],['rejected','Rejected'],['all','All']])}</div>
+ ${tbl(['#','User','Amount','Method','Reference','Slip','Status','Sent','Actions'],rows)}
+ <p class="m sm">Press Confirm only after you have seen the payment arrive (PayPal shown as completed, the bank or wallet balance, or the blockchain) for the same amount. For bank, JazzCash and Easypaisa the user pays in PKR: compare with the USD amount using your rate. Open the slip picture to check the details. Confirm adds the money to the user's wallet at once.</p>`}
+
+function vPayouts(){const rows=list(data).map(t=>[
+ '#'+t.id,`${E(t.name||'')}<br><span class="m sm">${E(t.email||'')}</span>`,'<b>'+M(t.amount)+'</b>',E(t.method),
+ `<span class="mono sm">${E(t.destination)}</span>${t.pay_holder?`<br><span class="m sm">${E(t.pay_holder)}</span>`:''}`,
+ pill(t.status==='pending'?'To send':t.status==='paid'?'Paid':'Rejected',t.status==='paid'?'ok':t.status==='pending'?'wn':'er'),D(t.created_at),
+ t.status==='pending'?`<div class="row" style="margin:0">${btn('Mark as paid','payout',`data-id="${t.id}" data-v="1" data-a="${t.amount}"`,'k')}${btn('Reject','payout',`data-id="${t.id}" data-v="0" data-a="${t.amount}"`,'r')}</div>`:'']);
+ return `<h2>Payouts</h2><div class="row">${sel('f_payouts',filt.payouts,[['pending','To send'],['paid','Paid'],['rejected','Rejected'],['all','All']])}</div>
+ ${tbl(['#','Publisher','Amount','Method','Send to','Status','Asked','Actions'],rows)}
+ <p class="m sm">Send the money first (copy the address or email above), then press Mark as paid. Reject returns the amount to the publisher's wallet.</p>`}
+
+function vOrders(){
+ if(detail)return vDetail();
+ const rows=list(data).map(o=>[
+ '#'+o.id,E(o.domain),`<span class="sm">@${E(o.buyer_username||'')}<br>${E(o.buyer_email||'')}</span>`,`<span class="sm">@${E(o.seller_username||'')}<br>${E(o.seller_email||'')}</span>`,
+ E(STAGE[o.stage]||o.stage)+(o.issue_open?'<br>'+pill('Problem: '+(o.issue_type||'open'),'er'):''),M(o.base*1.1)+`<br><span class="m sm">publisher ${M(o.base*0.9)}</span>`,
+ o.stage<4?`<span class="sm">due ${D(o.deadline)}</span>`:o.stage===4?`<span class="sm">auto-release ${D(o.release_at)}</span>`:'',btn('Open','order',`data-id="${o.id}"`,'g')]);
+ return `<h2>Orders</h2><div class="row">${sel('f_orders',filt.orders,[['open','In progress'],['issues','With open problem'],['done','Completed'],['refunded','Refunded'],['all','All']])}</div>
+ ${tbl(['#','Website','Buyer','Publisher','Stage','Buyer paid','Time','Details'],rows)}`}
+function vDetail(){const o=detail.order||{},ms=list(detail.messages);
+ return `<div class="row"><button class="btn s g" data-do="back">← Back to orders</button></div>
+ <div class="card"><h2>Order #${o.id} · ${E(o.domain)}</h2>
+ <p><b>Stage:</b> ${E(STAGE[o.stage]||o.stage)} ${o.issue_open?pill('Open problem: '+E(o.issue_type||''),'er'):''}</p>
+ <p><b>Buyer:</b> ${E(o.buyer_email||'')} &nbsp; <b>Publisher:</b> ${E(o.seller_email||'')}</p>
+ <p><b>Buyer paid:</b> ${M(o.base*1.1)} &nbsp; <b>Publisher gets:</b> ${M(o.base*0.9)} &nbsp; <b>Fees:</b> ${M(o.base*0.2)}</p>
+ <p><b>Article by:</b> ${E(o.writer)} &nbsp; <b>Placed:</b> ${D(o.created_at)} &nbsp; <b>Deadline:</b> ${D(o.deadline)} &nbsp; <b>Auto-release:</b> ${D(o.release_at)}</p>
+ ${o.link?`<p><b>Delivered link:</b> <a href="${E(o.link)}" target="_blank" rel="noopener noreferrer nofollow">${E(o.link)}</a></p>`:''}
+ ${o.issue_msg?`<p><b>Buyer's complaint:</b> ${E(o.issue_msg)}</p>`:''}
+ <div class="row">${o.stage===4?btn('Release payment to publisher','release',`data-id="${o.id}"`,'k'):''}${o.stage>=1&&o.stage<=4?btn('Cancel and refund buyer','refund',`data-id="${o.id}"`,'r'):''}</div></div>
+ ${o.article?`<div class="card"><h3>Article</h3><div class="msg">${E(o.article)}</div></div>`:''}
+ <div class="card"><h3>Messages (${ms.length})</h3>${ms.length?ms.map(x=>`<div class="msg"><b>${E(x.sender)}</b> · <span class="m sm">${D(x.created_at)}</span>\n${E(x.body)}</div>`).join(''):'<p class="m">No messages.</p>'}</div>`}
+
+function vUsers(){const rows=list(data).map(u=>[
+ `<b>${E(u.name||'')}</b> <span class="m sm">@${E(u.username||'')}</span><br><span class="m sm">${E(u.email||'')}</span>`,
+ pill(u.role,u.role==='admin'?'wn':'')+(u.suspended?' '+pill('Suspended','er'):''),E(u.country||''),
+ `<b>${M(u.balance)}</b><br><span class="m sm">earned ${M(u.earnings)}</span>`,
+ u.pay_method?`<span class="sm">${E(u.pay_method)}<br><span class="mono">${E(u.pay_account||'')}</span></span>`:'<span class="m sm">none</span>',D(u.created_at),
+ `<div class="row" style="margin:0">${btn('Balance','adj',`data-id="${E(u.id)}" data-e="${E(u.email||'')}"`,'g')}${btn('Role','role',`data-id="${E(u.id)}" data-e="${E(u.email||'')}" data-r="${E(u.role)}"`,'g')}${btn(u.suspended?'Reactivate':'Suspend','susp',`data-id="${E(u.id)}" data-e="${E(u.email||'')}" data-v="${u.suspended?0:1}"`,u.suspended?'k':'r')}</div>`]);
+ return `<h2>Users</h2><div class="row"><input id="q_users" placeholder="Search by email, name or username" value="${E(qs.users)}"><button class="btn s" data-do="search" data-t="users">Search</button></div>
+ ${tbl(['User','Role','Country','Wallet','Payout details','Joined','Actions'],rows)}`}
+
+function vLedger(){const rows=list(data).map(l=>['#'+l.id,E(l.email||''),`<b style="color:var(${Number(l.amount)<0?'--er':'--ok'})">${Number(l.amount)<0?'-':'+'}${M(Math.abs(l.amount))}</b>`,E(l.kind),l.order_id?'#'+l.order_id:'',E(l.note||''),D(l.created_at)]);
+ return `<h2>Ledger</h2><div class="row"><input id="q_ledger" placeholder="Filter by user email" value="${E(qs.ledger)}"><button class="btn s" data-do="search" data-t="ledger">Search</button></div>
+ ${tbl(['#','User','Amount','Type','Order','Note','Time'],rows)}<p class="m sm">Every change to any wallet is recorded here. This list cannot be edited.</p>`}
+
+function vLog(){return `<h2>Activity log</h2>${tbl(['Time','Admin','Action','Details'],list(data).map(l=>[D(l.created_at),E(l.admin_email||''),E(l.action),E(l.detail||'')]))}<p class="m sm">Every admin action is recorded here.</p>`}
+
+function vSettings(){const s=settingsData||{};
+ const f=(k,l,ph)=>`<label>${l}</label><input id="st_${k}" style="width:100%;max-width:560px" placeholder="${ph}" value="${E(s[k]||'')}">`;
+ const ta=(k,l,ph)=>`<label>${l}</label><textarea id="st_${k}" rows="4" style="width:100%;max-width:560px" placeholder="${ph}">${E(s[k]||'')}</textarea>`;
+ return `<h2>Settings</h2><div class="card"><h3>Where customers send their money</h3>
+ <p class="m sm">These details are shown to customers on the Add funds page. A method with an empty box is shown as "not available yet". Double-check every character.</p>
+ <h3 style="margin-top:14px">PayPal and USDT</h3>${f('paypal_email','PayPal email','you@example.com')}${f('usdt_address','USDT wallet address','Your wallet address')}${f('usdt_network','USDT network (must match your wallet)','TRC20')}
+ <h3 style="margin-top:14px">Bank accounts, JazzCash and Easypaisa</h3>
+ ${ta('bank_pk_details','Pakistani bank account (shown to customers as written)','Bank name\nAccount title\nAccount number\nIBAN')}
+ ${ta('bank_intl_details','International bank account (USD)','Bank name\nAccount holder\nIBAN / account number\nSWIFT / BIC')}
+ ${ta('jazzcash_details','JazzCash account','Account title\nMobile number')}${ta('easypaisa_details','Easypaisa account','Account title\nMobile number')}
+ ${f('pkr_rate','Rupee rate: how many PKR for 1 USD (used to show customers the amount to send)','Example: 280')}
+ <h3 style="margin-top:14px">Card payments</h3>
+ <p class="m sm">Cards cannot be taken by this site itself. Create a payment link with a card payment company that works for you, paste its secure https link here, and customers will see a "Pay by card" button. They pay there and send you the receipt number; you confirm the top-up as usual.</p>
+ ${f('card_link','Card payment page link (must start with https://)','https://...')}
+ ${ta('payment_note','Note shown to customers on the Add funds page (optional)','Example: Payments are confirmed within a few hours.')}
+ <div class="row" style="margin-top:14px"><button class="btn" data-do="saveset">Save settings</button></div></div>
+ <div class="card"><h3>Two-step verification (strongly recommended)</h3>
+ ${mfaOn?'<p>'+pill('On','ok')+' This admin account needs a code from your authenticator app at every login.</p>'
+ :enrollInfo?`<p>1) Open an authenticator app (Google Authenticator, Microsoft Authenticator or Authy) and scan this code, or type the key.</p><p><img alt="QR code" src="${E(enrollInfo.qr)}" width="180" height="180"></p><p class="mono sm">${E(enrollInfo.secret)}</p><p>2) Type the 6-digit code from the app:</p><div class="row"><input id="en_c" inputmode="numeric" maxlength="6" placeholder="123456"><button class="btn s" data-do="enrollok">Turn on</button></div>`
+ :'<p>'+pill('Off','er')+' Anyone with your password could control all the money. Turn this on now.</p><button class="btn" data-do="enroll">Set up two-step verification</button>'}</div>`}
+
+function render(){const r=$('root');
+ if(view==='boot'){return}
+ if(view==='login'){r.innerHTML=`<div class="auth"><div class="card"><h2>GPlinx Admin</h2><p class="m sm">Administrators only.</p><label>Email</label><input id="lg_e" type="email" style="width:100%" autocomplete="username"><label>Password</label><input id="lg_p" type="password" style="width:100%" autocomplete="current-password"><p style="color:var(--er)">${E(loginErr)}</p><button class="btn" style="width:100%" data-do="login">Log in</button></div></div>`;return}
+ if(view==='mfa'){r.innerHTML=`<div class="auth"><div class="card"><h2>Two-step verification</h2><p class="m sm">Type the 6-digit code from your authenticator app.</p><input id="mf_c" inputmode="numeric" maxlength="6" style="width:100%;font-size:22px;letter-spacing:.3em;text-align:center" placeholder="123456" autocomplete="one-time-code"><p style="color:var(--er)">${E(loginErr)}</p><button class="btn" style="width:100%" data-do="mfago">Verify</button><p><button class="btn g s" data-do="logout">Cancel</button></p></div></div>`;return}
+ if(view==='denied'){r.innerHTML=`<div class="auth"><div class="card"><h2>No access</h2><p>This account is not an administrator.</p><button class="btn" data-do="logout">Log out</button></div></div>`;return}
+ const badge=k=>{if(!ov)return '';const n={sites:ov.sites_pending,topups:ov.topups_pending,payouts:ov.payouts_pending,orders:ov.issues_open}[k];return n>0?`<span class="badge">${n}</span>`:''};
+ let body='';
+ if(busy&&tab!=='ov'&&data===null&&tab!=='settings')body='<div class="card m">Loading…</div>';
+ else body={ov:vOverview,sites:vSites,topups:vTopups,payouts:vPayouts,orders:vOrders,users:vUsers,ledger:vLedger,settings:vSettings,log:vLog}[tab]();
+ r.innerHTML=`<div class="top"><b>GP<span>linx</span> Admin</b><span><small>${E(adminEmail)}</small> &nbsp; <button class="btn s g" style="color:#fff;border-color:#ffffff55" data-do="refresh">Refresh</button> <button class="btn s g" style="color:#fff;border-color:#ffffff55" data-do="logout">Log out</button></span></div>
+ <div class="wrap"><div class="side">${TABS.map(t=>`<button class="${tab===t[0]?'on':''}" data-do="tab" data-v="${t[0]}">${t[1]}${badge(t[0])}</button>`).join('')}</div><div>${body}</div></div>`}
+
+/* ---------- clicks ---------- */
+const DO={
+ login:doLogin,mfago:doMfa,logout:doLogout,refresh:()=>load(),
+ tab:d=>{tab=d.v;detail=null;if(d.f)filt.orders=d.f;load()},
+ back:()=>{detail=null;render()},
+ search:d=>{qs[d.t]=$('q_'+d.t).value.trim();load()},
+ siteok:d=>act('admin_set_site_approved',{p_id:d.id,p_approved:d.v==='1'},d.v==='1'?'Website approved. It is now live.':'Website hidden from the marketplace.'),
+ sitedel:d=>act('admin_delete_site',{p_id:d.id},'Website deleted.','Delete '+d.n+' permanently? Existing orders are kept.'),
+ siteedit:d=>{const s=list(data).find(x=>x.id===d.i);if(!s)return;
+  const pr=prompt('Price in USD for '+s.domain,s.price);if(pr===null)return;
+  const dr=prompt('DR (0 to 100)',s.dr);if(dr===null)return;
+  const tr=prompt('Monthly traffic',s.traffic);if(tr===null)return;
+  const hr=prompt('Delivery time in hours',s.delivery_hours);if(hr===null)return;
+  const ni=prompt('Niche',s.niche||'');if(ni===null)return;
+  act('admin_update_site',{p_id:s.id,p_price:+pr,p_dr:Math.round(+dr),p_traffic:Math.round(+tr),p_hours:Math.round(+hr),p_niche:ni},'Website updated.')},
+ topup:d=>act('admin_topup_decide',{p_id:+d.id,p_approve:d.v==='1'},d.v==='1'?'Top-up confirmed and credited.':'Top-up rejected.',d.v==='1'?`Confirm that you received ${M(d.a)} from ${d.e}? It will be added to their wallet now.`:`Reject this top-up of ${M(d.a)}?`),
+ payout:d=>act('admin_payout_decide',{p_id:+d.id,p_paid:d.v==='1'},d.v==='1'?'Marked as paid.':'Payout rejected and returned to the wallet.',d.v==='1'?`Press OK only if you already sent ${M(d.a)}.`:`Reject this payout and return ${M(d.a)} to the publisher's wallet?`),
+ slip:async d=>{const w=window.open('','_blank');try{const r=await sb.storage.from('slips').createSignedUrl(d.p,300);if(r.error||!r.data){if(w)w.close();toast('Could not open the slip: '+(r.error?r.error.message:'unknown error'),true);return}if(w)w.location.href=r.data.signedUrl;else window.location.href=r.data.signedUrl}catch(x){if(w)w.close();toast('Could not open the slip.',true)}},
+ order:async d=>{const r=await rpc('admin_order_detail',{p_id:+d.id});if(r&&r!==true){detail=r;render()}},
+ release:d=>act('admin_release_order',{p_id:+d.id},'Payment released to the publisher.','Release the payment to the publisher now?'),
+ refund:d=>act('admin_refund_order',{p_id:+d.id},'Order cancelled and the buyer was refunded.','Cancel this order and refund the buyer in full?'),
+ adj:d=>{const a=prompt('Amount to add (use a minus sign to remove) for '+d.e+':','');if(a===null||a==='')return;const n=prompt('Reason (shown to the user and saved in the log):','');if(n===null)return;
+  act('admin_adjust_balance',{p_user:d.id,p_amount:+a,p_note:n},'Balance adjusted.',`Change ${d.e}'s wallet by ${M(+a)}?`)},
+ role:d=>{const r=prompt('New role for '+d.e+' (buyer, seller or admin). Current: '+d.r,d.r);if(r===null)return;
+  act('admin_set_role',{p_user:d.id,p_role:r.trim().toLowerCase()},'Role changed.',`Change ${d.e} to ${r}?`)},
+ susp:d=>act('admin_set_suspended',{p_user:d.id,p_flag:d.v==='1'},d.v==='1'?'Account suspended.':'Account reactivated.',d.v==='1'?`Suspend ${d.e}? They will not be able to order, top up, withdraw or list websites.`:null),
+ saveset:async()=>{const cl=$('st_card_link').value.trim(),pr=$('st_pkr_rate').value.trim();if(cl&&!/^https:\/\//.test(cl)){toast('The card payment link must start with https://',true);return}if(pr&&!(Number(pr)>0)){toast('The rupee rate must be a number, for example 280',true);return}let ok=true;for(const k of KEYS){const r=await rpc('admin_set_setting',{p_key:k,p_value:$('st_'+k).value.trim()});if(r===null){ok=false;break}}if(ok){toast('Settings saved.');await load()}},
+ enroll:async()=>{try{const r=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'GPlinx admin '+Date.now()});if(r.error){toast(r.error.message,true);return}
+   enrollInfo={id:r.data.id,qr:r.data.totp.qr_code,secret:r.data.totp.secret};render()}catch(x){toast('Could not start the setup.',true)}},
+ enrollok:async()=>{const code=$('en_c').value.trim();if(!enrollInfo)return;try{const r=await sb.auth.mfa.challengeAndVerify({factorId:enrollInfo.id,code});
+   if(r.error){toast('Wrong code. Try again.',true);return}enrollInfo=null;mfaOn=true;toast('Two-step verification is now on.');render()}catch(x){toast('Could not verify the code.',true)}}
+};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-do]');if(!b)return;e.preventDefault();const f=DO[b.dataset.do];if(f)f(b.dataset)});
+document.addEventListener('change',e=>{const id=e.target.dataset&&e.target.dataset.filter;if(!id)return;filt[id.slice(2)]=e.target.value;load()});
+document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const id=e.target.id;
+ if(id==='lg_e'||id==='lg_p')doLogin();else if(id==='mf_c')doMfa();else if(id==='q_users')DO.search({t:'users'});else if(id==='q_ledger')DO.search({t:'ledger'})});
+start();
+</script>
+</body>
+</html>
