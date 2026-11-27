@@ -1,264 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
-<title>GPlinx Admin</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='f' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%23ff8a3d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='40' height='40' rx='12' fill='url(%23f)'/%3E%3Cpath d='M27.2 13.6A9.2 9.2 0 1 0 29.2 20.6H21.4' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><title>GPlinx Admin</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%2315120E'/%3E%3Cpath d='M33.5 15.2A12.5 12.5 0 1 0 36.5 25H25' fill='none' stroke='%23FF8A00' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M28 14.5h8v8M36 14.5L26 24.5' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
-:root{--bg:#F3ECD8;--c:rgba(255,255,255,.82);--t:#1E3C72;--m:#4F6591;--b:rgba(30,60,114,.16);--p:#3B93B0;--o:#FFB752;--ok:#12805c;--er:#C21616;--wn:#8a5a00;--bt:#15294f;--g:linear-gradient(135deg,#FFB752 0%,#FFB752 38%,#FD1D1D 150%);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-*{box-sizing:border-box}[hidden]{display:none!important}
-body{margin:0;color:var(--t);font:15px/1.55 "Times New Roman",Times,"Liberation Serif",serif;background:radial-gradient(60% 50% at 8% 6%,rgba(242,166,184,.5),transparent 70%),radial-gradient(55% 45% at 95% 12%,rgba(246,211,101,.45),transparent 70%),radial-gradient(60% 50% at 80% 96%,rgba(253,160,133,.35),transparent 70%),#F3ECD8;background-attachment:fixed}
-a{color:var(--p)}
-h1,h2,h3{margin:0 0 .6em;line-height:1.2}h2{font-size:22px}h3{font-size:16px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;background:#1E3C72;color:#F3ECD8;position:sticky;top:0;z-index:5}
-.top b{font-size:18px}.top b span{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
-.top small{opacity:.7}
-.wrap{display:grid;grid-template-columns:200px 1fr;gap:18px;max-width:1280px;margin:0 auto;padding:18px}
-@media(max-width:820px){.wrap{grid-template-columns:1fr}}
-.side{display:flex;flex-direction:column;gap:4px}
-@media(max-width:820px){.side{flex-direction:row;flex-wrap:wrap}}
-.side button{display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left;border:1px solid transparent;background:transparent;color:var(--t);padding:9px 12px;border-radius:10px;font:inherit;cursor:pointer}
-.side button:hover{background:var(--c)}.side button.on{background:var(--c);border-color:var(--b);font-weight:700}
-.badge{background:var(--er);color:#fff;border-radius:99px;font-size:12px;padding:0 7px;min-width:20px;text-align:center}
-.card{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:16px;margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
-.stat{backdrop-filter:blur(8px);background:var(--c);border:1px solid var(--b);border-radius:14px;padding:14px}.stat b{display:block;font-size:24px}.stat span{color:var(--m);font-size:13px}
-.tw{overflow-x:auto;border:1px solid var(--b);border-radius:12px;background:var(--c)}
-table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--b);vertical-align:top}
-th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--m);white-space:nowrap}tr:last-child td{border-bottom:0}
-.btn{border:0;background:var(--g);color:var(--bt);padding:8px 14px;border-radius:9px;font:inherit;font-weight:700;cursor:pointer}
-.btn.s{padding:5px 10px;font-size:13px}.btn.g{background:transparent;color:var(--t);border:1px solid var(--b)}.btn.r{background:var(--er);color:#fff}.btn.k{background:var(--ok);color:#fff}
-.btn:disabled{opacity:.5;cursor:default}
+:root{--or:#FF8A00;--or2:#E57A00;--ch:#15120E;--cr:#FFF1DC;--off:#F6F4EF;--tx:#15120E;--mu:#6B645A;--bd:#E6E1D6;--gr:#1FA45B;--rd:#C62828;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--off);color:var(--tx);font:15px/1.55 "Inter","Segoe UI",system-ui,Arial,sans-serif}a{color:var(--or2)}
+h2{font-size:23px;margin:0 0 14px}h3{font-size:16px;margin:0 0 8px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 20px;background:var(--ch);color:#fff;position:sticky;top:0;z-index:10}.top b{font-size:19px}.top b span{color:var(--or)}.top small{opacity:.7}
+.wrap{display:grid;grid-template-columns:210px 1fr;gap:20px;max-width:1380px;margin:0 auto;padding:20px}@media(max-width:860px){.wrap{grid-template-columns:1fr}}
+.side{display:flex;flex-direction:column;gap:4px}@media(max-width:860px){.side{flex-direction:row;flex-wrap:wrap}}
+.side button{display:flex;justify-content:space-between;align-items:center;gap:8px;border:0;background:transparent;color:var(--tx);padding:10px 14px;border-radius:12px;font:inherit;font-weight:600;cursor:pointer;text-align:left}.side button:hover{background:#fff}.side button.on{background:var(--or);color:var(--ch)}
+.badge{background:var(--rd);color:#fff;border-radius:99px;font-size:12px;padding:0 7px;min-width:20px;text-align:center}
+.card{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:18px;margin-bottom:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
+.stat{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:14px}.stat b{display:block;font-size:24px}.stat span{color:var(--mu);font-size:13px}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:14px;background:#fff;margin-bottom:12px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--bd);vertical-align:top}th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mu);white-space:nowrap;background:#faf8f3}tr:last-child td{border-bottom:0}
+.btn{border:0;background:var(--or);color:var(--ch);padding:9px 16px;border-radius:999px;font:inherit;font-weight:700;cursor:pointer}.btn:hover{filter:brightness(1.06)}.btn.s{padding:5px 12px;font-size:13px}.btn.g{background:#fff;border:1px solid var(--bd)}.btn.r{background:var(--rd);color:#fff}.btn.k{background:var(--gr);color:#fff}.btn.d{background:var(--ch);color:#fff}.btn:disabled{opacity:.5}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
-input,select,textarea{font:inherit;color:var(--t);background:var(--bg);border:1px solid var(--b);border-radius:9px;padding:8px 10px;max-width:100%}
-label{display:block;font-size:13px;color:var(--m);margin:10px 0 4px}
-.pill{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:700;border:1px solid var(--b)}
-.pill.ok{color:var(--ok)}.pill.er{color:var(--er)}.pill.wn{color:var(--wn)}
-.m{color:var(--m)}.sm{font-size:13px}.mono{font-family:ui-monospace,Consolas,monospace;word-break:break-all}
-.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);padding:11px 18px;border-radius:12px;background:#1E3C72;color:#fff;z-index:20;max-width:92vw;box-shadow:0 10px 30px rgba(0,0,0,.35)}.toast.er{background:var(--er)}
+input,select,textarea{font:inherit;color:var(--tx);background:#fff;border:1.5px solid var(--bd);border-radius:10px;padding:8px 11px;max-width:100%}input:focus,select:focus,textarea:focus{outline:none;border-color:var(--or)}input[type=color]{padding:2px;width:54px;height:38px}
+label{display:block;font-size:13px;font-weight:600;color:#3b362e;margin:10px 0 4px}textarea{width:100%;min-height:70px}.full{width:100%}
+.pill{display:inline-block;padding:1px 10px;border-radius:99px;font-size:12px;font-weight:700;background:#eee}.pill.ok{background:#e3f6ea;color:#14753f}.pill.er{background:#fde7e7;color:#a11b1b}.pill.wn{background:var(--cr);color:var(--or2)}
+.m{color:var(--mu)}.sm{font-size:13px}.mono{font-family:ui-monospace,Consolas,monospace;word-break:break-all}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);padding:11px 18px;border-radius:12px;background:var(--ch);color:#fff;z-index:20;max-width:92vw;box-shadow:0 10px 30px rgba(0,0,0,.35)}.toast.er{background:var(--rd)}
 .auth{max-width:380px;margin:9vh auto;padding:0 18px}.auth .card{padding:24px}
-.msg{white-space:pre-wrap;border:1px solid var(--b);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--bg)}
-.msg b{font-size:12px;text-transform:uppercase;color:var(--m)}
-</style>
-</head>
-<body>
-<div id="root"><div class="auth"><p class="m">Loading…</p></div></div>
-<div id="toast" class="toast" hidden></div>
+.msg{white-space:pre-wrap;border:1px solid var(--bd);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--off)}.msg b{font-size:12px;text-transform:uppercase;color:var(--mu)}
+details{border:1px solid var(--bd);border-radius:12px;padding:10px 14px;margin:8px 0;background:#fff}summary{cursor:pointer;font-weight:700}
+.sect{border-top:1px solid var(--bd);margin-top:14px;padding-top:6px}.li{border:1px solid var(--bd);border-radius:12px;padding:10px 12px;margin:8px 0;background:#faf8f3}.pv{max-width:220px;max-height:120px;border:1px solid var(--bd);border-radius:10px;display:block;margin:6px 0;background:#eee}
+
+</style></head><body><div id="root"><div class="auth"><p class="m">Loading…</p></div></div><div id="toast" class="toast" hidden></div>
+<script>
+/* GPlinx default content. Everything here can be changed from the admin panel (Content and Appearance tabs). */
+window.GP_DEFAULTS={
+site:{name:'GPlinx',tagline:'Guest Post Linx',supportEmail:'support@gplinx.com',
+ metaTitle:'Guest Posts & Backlinks Marketplace | GPlinx',
+ metaDescription:'GPlinx — Guest Post Linx. Buy guest posts and backlinks on vetted websites in different countries. Escrow on every order, no lock-in.'},
+design:{primary:'#FF8A00',primaryDark:'#E57A00',dark:'#15120E',cream:'#FFF1DC',offwhite:'#F6F4EF',text:'#15120E',muted:'#6B645A',
+ radius:18,heroOverlay:82,heroHeight:640,font:'Inter',logoText:'GPlinx',logoUrl:'',
+ heroDesktop:'images/hero-desktop.jpg',heroMobile:'images/hero-mobile.jpg',heroAlt:'A professional woman in a grey blazer holding a laptop, with a man working at a desk behind her',
+ featureDesktop:'images/feature-desktop.jpg',featureMobile:'images/feature-mobile.jpg',featureAlt:'A smiling woman working on a laptop in a beige armchair'},
+home:{
+ hero:{eyebrow:'Guest Posts & Backlinks Marketplace',title:'Links That Lift Your ',accent:'Rankings',
+  sub:'Browse vetted websites, order a guest post in minutes, and release payment only when you have checked and approved the live link.',
+  btn1:'Browse Websites',btn2:'Create a Free Account',
+  badges:['Escrow on every order','20-day review window','0 lock-in contracts'],cardTitle:'Link approved',cardSub:'Payment released from escrow'},
+ feature:{heading:'Buying Guest Posts Is No Longer a Gamble',
+  items:['Your money is held in escrow until you approve the live link','See traffic, DR, DA, country and price before you order','Every website is vetted before it is listed','Pay per order — no subscription, no hidden charges'],
+  chip1:'Escrow on every order',chip2:'20 days to review'},
+ trust:[{big:'Escrow',small:'On every order'},{big:'20 days',small:'Review window'},{big:'Pay Per Order',small:'No subscription'},{big:'0',small:'Lock-in contracts'}],
+ niches:{heading:'Every Niche, One Marketplace',intro:'Filter by topic, authority, traffic, language and price — and find a site that fits your niche and your budget, in different countries.',
+  items:['Technology','Business','Finance','Health','Travel','Lifestyle','Marketing','Education','Crypto','Food','Sports','E-commerce']},
+ services:{eyebrow:'Services',heading:'What You Can Order on GPlinx',intro:'Guest posts and link insertions are open now. The other services are being prepared.',
+  items:[
+  {title:'Guest Posts',text:'A new article on a real website in your niche, with your link placed naturally inside it. You choose the site, approve the topic, and get the live URL when it is published.',status:'available'},
+  {title:'Niche Edits',text:'Your link added to an article that is already published and already getting visits. A good choice when you want a faster result without a brand-new post.',status:'available'},
+  {title:'Text Links',text:'Short, relevant text links on pages that already get traffic. Useful for supporting pages and for building links across several sites at a steady pace.',status:'soon'},
+  {title:'Footer and Sitewide Links',text:'Links that appear across a website, including in the footer. Best for brand visibility and steady referral traffic from one publisher over time.',status:'soon'},
+  {title:'Banner Ads',text:'Image banners on websites in your niche and country. You choose the site and the placement, and you pay for the slot you booked.',status:'soon'},
+  {title:'Link Building for Agencies',text:'Guest posts and niche edits planned around one client website and one goal. One account, one balance, and one clear report per client that you can forward as it is.',status:'available'}]},
+ steps:{heading:'How an Order Works',intro:'No long email chains. No chasing publishers. You approve every step.',
+  items:[{title:'Pick a site',text:'Compare listings and choose the ones that fit your niche and budget. Every listing shows traffic, DR, DA, language, country and price before you order.'},
+  {title:'Place the order',text:'Pay up front. Your money waits safely in escrow — it is not sent to the publisher yet.'},
+  {title:'Get the article',text:'Write the article yourself, or let the publisher write it for a small extra fee. Send your target URL, anchor text and instructions with the order.'},
+  {title:'Approve and release',text:'Check the live link. The publisher’s share is released when you approve it, or after the 20-day review window. If the link is not delivered as agreed, the amount returns to your balance.'}]},
+ market:{heading:'See the site, its numbers and its price — before you order',intro:'Full website addresses are shown after you create a free account. These are the kind of listings you will find on GPlinx.',
+  note:'A 20% service fee is shown on every order before you confirm it. There is no monthly fee and nothing is added after you confirm.',btn:'Browse All Websites',empty:'Featured listings will appear here soon. Create a free account to see every website, with its numbers and price.'},
+ why:{heading:'Why Buyers Choose GPlinx',intro:'Clear prices, checked sites, and payment held until you approve the live link.',
+  items:[{title:'You see everything first',text:'Traffic, DR, DA, language, country and price are shown on the listing. You decide with the facts in front of you, not on a promise.'},
+  {title:'Your money is held in escrow',text:'Funds are released only after you approve the published link. You never pay for a link you have not seen live.'},
+  {title:'20 days to review',text:'You get a full 20-day review window to check the live link. That is your time to confirm the anchor, the placement and the page — without rushing.'},
+  {title:'Simple fees',text:'No subscriptions and no lock-in contract. You pay per order, and the 20% service fee is shown before you pay.'},
+  {title:'Private order chat',text:'Talk through an order number. Names and contact details stay hidden, so the order stays clean and both sides stay protected.'},
+  {title:'Your words or theirs',text:'Submit your own article, or order one from the publisher. Either way, the publisher checks it before it goes live.'}]},
+ vetted:{heading:'Vetted before it is listed',intro:'A good DR number alone is not enough. A site has to pass these checks before it appears on GPlinx.',
+  checks:[{title:'Real traffic',text:'The site gets visits from search and real readers.'},{title:'Real content',text:'Articles are written for readers, are up to date, and match the site’s niche.'},
+  {title:'Clean history',text:'The site is indexed, loads properly, and shows no signs of spam.'},{title:'A real publisher',text:'There is a person who runs the site, replies to messages, and takes responsibility for the placement.'}],
+  note:'If a site fails any of these checks, we do not list it — even if its DR looks high.'},
+ publishers:{heading:'List your website. Get paid for every approved article.',text:'You own a website with real readers. List it on GPlinx, set your own price, and accept only the articles that fit your site.',
+  points:[{title:'You set the price',text:'Your site, your price. Change it when your traffic changes.'},{title:'You keep 100% of your price',text:'GPlinx takes no commission from publishers. The buyer pays the service fee.'},
+  {title:'You are paid after approval',text:'Once the buyer approves the live link, your share is released. No chasing payments by email.'}],
+  note:'If you withdraw by PayPal, PayPal’s 10% charge is deducted from your payout. Other payout methods have no deduction from us.',btn:'List Your Website'},
+ testimonials:{heading:'What buyers and publishers say',items:[]},
+ faq:{heading:'Frequently Asked Questions',items:[
+  {q:'What is GPlinx?',a:'GPlinx — short for Guest Post Linx — is a guest posts and backlinks marketplace. Buyers order placements on real websites, and publishers earn by accepting those orders on their own sites.'},
+  {q:'How do I know a website is real?',a:'Every listing shows traffic, DR, DA, country, language and niche, and every site is checked before it is listed. You also check the live link yourself before payment is released.'},
+  {q:'How does payment work?',a:'You pay up front and your money waits safely in escrow. It is released to the publisher only after you approve the live link, or after the 20-day review window.'},
+  {q:'What is the fee?',a:'You pay per order only. There is no subscription and no monthly fee. A 20% service fee is added to the listing price and is shown before you confirm the order. Publishers pay no commission.'},
+  {q:'What happens if a publisher does not deliver?',a:'If the order is turned down or is not delivered as agreed, the amount returns to your balance so you can order from another site.'},
+  {q:'Can I ask for changes after the link is live?',a:'Yes. You have 3 days after delivery to ask for improvements through the order messages. If you report a problem, the payment stays on hold, and a new 20-day review window starts once it is fixed.'},
+  {q:'How long does an order take?',a:'It depends on the publisher. Each listing shows the expected delivery time before you order, so you can choose a faster site when you need one. A live timer on every order shows the time left.'},
+  {q:'Will my article be indexed?',a:'The publisher must make sure the article is indexed by Google within the 20-day review window. If it is not indexed, report it and the payment stays on hold until it is fixed.'},
+  {q:'What is a niche edit?',a:'A niche edit means your link is added to an article that is already published and already indexed. It is often faster and cheaper than a new guest post.'},
+  {q:'Can I order for clients?',a:'Yes. You can place orders for different client websites from one account, and keep each order and live link in its own record.'},
+  {q:'Do I have to sign a contract?',a:'No. There are 0 lock-in contracts. You order when you need links, and you pay per order.'}]},
+ cta:{heading:'Ready to boost your next campaign?',text:'Create a free account and place your first order today. Pick a website, check the live link yourself, and release payment only when you approve it.',btn:'Get Started — Create a Free Account'},
+ footer:{text:'GPlinx — Guest Post Linx. Guest posts and niche edits on vetted websites in different countries.'},
+ listing:{
+  requirements:['Google must show at least 50 indexed pages (search site:yourdomain.com).','The website gets at least 200 visits per month.','The domain is at least 2 months old.','Moz Domain Authority (DA) of at least 15, and a spam score of 10% or lower.','Ahrefs Domain Rating (DR) of at least 15.','The website is updated regularly with unique and relevant content.','The website follows the law and respects copyright.','The website follows high ethical standards.'],
+  forbidden:['Adult or mature content','Dating services','Gambling and betting','Unfair promotion of competing services','Marketplace websites','Binary or investment scams','Hacking, cracked software or cheat codes','Witchcraft and magic','Sale of fake products','Tobacco and intoxicants','Alcohol','Weapons and arms','Open forum platforms','Deceitful activities','Forex trading','Medical websites without valid certification','PBN (private blog networks)','Online pharmaceutical sales and supplements'],
+  payments:'You keep 100% of your listing price: GPlinx takes no commission from publishers, and the buyer pays a 20% service fee on top. Your money is released when the buyer approves the live link, or automatically after the 20-day review window. If the buyer reports a problem, the payment stays on hold until you fix it, and a new 20-day review starts. When you withdraw by PayPal, PayPal’s 10% charge is deducted from your payout. The minimum withdrawal is $10. Every article must be indexed by Google within 20 days, and buyers can ask for improvements for 3 days after delivery.',
+  evaluation:'We may review your website from the point of view of a reader. A website can be rejected if it does not meet our standards, and it can be removed after approval if its quality falls or it breaks our rules.',
+  taskRules:'You can: accept or reject an order, write the article if the buyer asked you to, publish it on your website, send the live link, and fix problems the buyer reports.\nYou cannot: share emails, phone numbers or other contact details, ask for payment outside GPlinx, remove a delivered link during the review period, or publish without placing the buyer’s link as agreed.'}
+},
+legal:{
+terms:`## 1. What GPlinx is
+GPlinx is an online marketplace where advertisers (buyers) order guest posts and links on websites owned by publishers. We provide the platform, hold payments in escrow and help resolve problems. We do not own the listed websites and we do not promise any ranking, traffic or search engine result.
+
+## 2. Your account
+You must be at least 18 years old and give true information. Keep your password safe: you are responsible for what happens in your account. Your username is created from your email and cannot be changed. We may suspend or close accounts that break these terms or put other users at risk.
+
+## 3. Prices and fees
+Publishers set their own prices in US dollars. The buyer pays the publisher's price plus a flat 20% service fee (and the extra price if the publisher writes the article). GPlinx takes no commission from publishers: the publisher receives the full listing price. A promo code can lower the buyer's service fee. We may change our fees; a change only applies to orders placed after it is announced.
+
+## 4. Adding money to your wallet
+You can add funds with the payment methods shown on the Add funds page (PayPal, USDT, Pakistani or international bank transfer, JazzCash, Easypaisa). Send the payment to the details shown there, enter the transaction or reference number, and upload a picture of your payment slip. The slip is required. Your wallet is credited after we confirm the payment. Always use the network shown for USDT: money sent on a different network or to a wrong address cannot be recovered. A transaction ID can be used only once. If a payment is reversed, cancelled or found to be fraudulent, we may remove the credit and suspend the account.
+
+## 5. How an order works
+When a buyer orders, the payment is held in escrow. The publisher accepts or rejects the order. If the publisher rejects it, or does not deliver in the promised time, the buyer gets a full refund to the wallet (or can choose to wait longer). The publisher publishes the article, which the buyer provides or the publisher writes, and sends the live link.
+
+## 6. Improvements, review period and payment release
+After delivery the buyer has 3 days to ask for improvements through the order messages. For 20 days the buyer can also report a removed link or an article that is not indexed by Google. The publisher must make sure the article is indexed within the 20 days. While a problem is open, the payment stays on hold; when the publisher fixes it, a new 20-day review period starts. If the buyer approves, or 20 days pass with no open problem, the publisher's payment is released automatically. Every order shows a live timer.
+
+## 7. Publisher payouts
+Publishers can withdraw their available balance (minimum $10) to the payout details saved in their settings (PayPal, USDT, bank account, JazzCash or Easypaisa). When the payout is by PayPal, PayPal's 10% charge is deducted from the publisher's payout. Payouts are reviewed and sent manually. You are responsible for the accuracy of your payout details; payments sent to wrong details cannot be recovered.
+
+## 8. Rules
+You may not use GPlinx for anything illegal, deceptive or harmful. This includes scams, malware, hate content, adult content, copyright infringement, fake or spam websites and misleading claims. Publisher websites must meet the listing requirements (for example DA and DR of at least 15, spam score of 10% or lower, at least 200 visits a month, at least 50 indexed pages, and a domain at least 2 months old). You may not share contact details in chat (they are hidden automatically), take deals outside the platform, abuse refunds or chargebacks, or create several accounts to cheat.
+
+## 9. Disputes
+If buyer and publisher disagree, contact us. We will review the order, the messages and the link in good faith and may release the payment, refund the buyer or keep the funds on hold. Our decision on how funds held on GPlinx are paid out is final.
+
+## 10. Our responsibility
+GPlinx is provided "as is". We are not responsible for search engine penalties, ranking changes, or the actions of users. To the extent the law allows, our total responsibility for any order is limited to the fees we received for that order.
+
+## 11. Changes and contact
+We may update these terms; the date on this page shows the latest version. Using GPlinx after a change means you accept it. These terms are governed by the laws of the country where GPlinx is operated.`,
+privacy:`## What we collect
+Account details (name, email, country, phone if you add it), your username, an optional profile picture, payout details you choose to save (such as a PayPal email or a USDT wallet address), the websites you list, your orders, messages and delivered links, payment slips you upload, payment records (amounts and transaction IDs), and basic technical data needed to keep the service secure.
+
+## Why we use it
+To run your account, process orders, hold and release payments, confirm top-ups, send payouts, prevent fraud, resolve disputes, send service emails (such as account confirmation and password reset), and meet legal and accounting duties. We do not sell your personal data and we do not show advertising.
+
+## What other users can see
+Buyers and publishers never see each other's names, usernames, pictures or contact details. Order chat runs on order numbers, and phone numbers, emails and links are hidden automatically. Buyers see a listed website's address, niche, price and quality figures, but not who owns it. Payment slips are stored privately: only you and the GPlinx administrators can open them. GPlinx administrators can read order messages to resolve disputes.
+
+## Who helps us run the service
+We use trusted providers: Supabase (database, login and file storage), GitHub (hosting of this website), and an email delivery service for service emails. When you pay by PayPal, USDT, bank transfer or a mobile wallet, the payment network handles the payment and we receive the transaction details. These providers process data only to provide their service to us.
+
+## Cookies and browser storage
+We do not use advertising or tracking cookies. Your browser stores a login session so you stay signed in; logging out removes it.
+
+## How long we keep data
+While your account is active, and afterwards as long as needed for accounting, fraud prevention and legal reasons.
+
+## Security
+The site uses an encrypted connection. Access to data is limited by account rules, and administrator actions are logged. No system is perfectly secure, so please use a strong, unique password.
+
+## Your choices
+You can ask to see, correct or delete your data by writing to us. We may keep records we are required to keep. GPlinx is not for people under 18.
+
+## Changes
+We may update this policy; the date on this page shows the latest version.`,
+refunds:`## Orders
+If the publisher rejects your order, or does not deliver within the promised time, you can take a full refund (the price, the service fee and any extra) to your GPlinx wallet, or choose to wait longer. After delivery you have 3 days to ask for improvements and 20 days to report a removed link or an article that is not indexed. If a problem is not fixed, contact us and we will review the order and may refund you.
+
+## Completed orders
+Once you approve an order, or the 20-day review period ends with no open problem, the payment is released to the publisher and the order is final.
+
+## Wallet balance
+Money added to your wallet is meant for orders on GPlinx. If you want unused balance returned, write to us and we will review the request.
+
+## Payouts
+If we reject a payout request, the amount returns to your wallet balance.
+
+## How to ask
+Write to us with your order number. Refunds to your wallet appear in your balance; we explain any other refund before sending it.`,
+updated:'26 November 2026'}
+};
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
+'use strict';
 const SB_URL='https://gpewwafexrhvrxflwkwy.supabase.co',SB_KEY='sb_publishable_obGV7y7avYlZuT6hhPczoQ_YGWOoauL';
 const sb=(window.supabase&&window.supabase.createClient)?window.supabase.createClient(SB_URL,SB_KEY):null;
 const $=id=>document.getElementById(id);
 const E=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const M=n=>'$'+Number(n||0).toFixed(2),D=t=>t?new Date(t).toLocaleString():'';
-const TABS=[['ov','Overview'],['sites','Websites'],['topups','Top-ups'],['payouts','Payouts'],['orders','Orders'],['users','Users'],['ledger','Ledger'],['settings','Settings'],['log','Activity log']];
-const ML={paypal:'PayPal',usdt:'USDT',bank_pk:'Pakistani bank',bank_intl:'International bank',jazzcash:'JazzCash',easypaisa:'Easypaisa',card:'Card'};
-const KEYS=['paypal_email','usdt_address','usdt_network','bank_pk_details','bank_intl_details','jazzcash_details','easypaisa_details','card_link','pkr_rate','payment_note'];
-const STAGE={1:'Waiting for publisher',2:'In progress',3:'Article ready, waiting for link',4:'Delivered, in review',5:'Completed',6:'Refunded'};
-let view='boot',tab='ov',data=null,ov=null,detail=null,busy=false,mfaOn=false,enrollInfo=null,adminEmail='',
- filt={sites:'pending',topups:'pending',payouts:'pending',orders:'open'},qs={users:'',ledger:''},loginErr='',settingsData={};
-let tt=null;
-function toast(t,bad){const e=$('toast');e.textContent=t;e.className='toast'+(bad?' er':'');e.hidden=false;clearTimeout(tt);tt=setTimeout(()=>e.hidden=true,bad?6000:3200)}
+const clone=o=>JSON.parse(JSON.stringify(o));
+function merge(a,b){if(Array.isArray(b))return b;if(b&&typeof b==='object'){const o=Object.assign({},a&&typeof a==='object'&&!Array.isArray(a)?a:{});for(const k in b)o[k]=merge(o[k],b[k]);return o}return b===undefined?a:b}
+const TABS=[['ov','Overview'],['sites','Websites'],['topups','Top-ups'],['payouts','Payouts'],['orders','Orders'],['users','Users'],['ledger','Ledger'],['promos','Promo codes'],['content','Content'],['look','Appearance'],['settings','Settings'],['log','Activity log']];
+const ML={paypal:'PayPal',usdt:'USDT',bank_pk:'Pakistani bank',bank_intl:'International bank',jazzcash:'JazzCash',easypaisa:'Easypaisa'};
+const KEYS=['paypal_email','usdt_address','usdt_network','bank_pk_details','bank_intl_details','jazzcash_details','easypaisa_details','pkr_rate','payment_note'];
+const STAGE={1:'Not started',2:'In progress',3:'In progress',4:'Delivered, awaiting approval',5:'Completed',6:'Refunded or rejected'};
+const TOPN={technical:'Technical',ai:'AI-related',loan:'Loan',gambling:'Gambling',adult:'Adult',cbd:'CBD',forex:'Forex',crypto:'Crypto',dating:'Dating'};
+let view='boot',tab='ov',data=null,ov=null,detail=null,busy=false,mfaOn=false,enrollInfo=null,adminEmail='',cgrp='home',
+ filt={sites:'pending',topups:'pending',payouts:'pending',orders:'open'},qs={users:'',ledger:''},loginErr='',settingsData={},W=null,tt=null;
+let AC=merge({},window.GP_DEFAULTS);
+function toast(t,bad){const e=$('toast');e.textContent=t;e.className='toast'+(bad?' er':'');e.hidden=false;clearTimeout(tt);tt=setTimeout(()=>e.hidden=true,bad?6500:3200)}
 async function rpc(fn,args){if(!sb){toast('The service is not reachable. Refresh the page.',true);return null}
  try{const r=await sb.rpc(fn,args||{});if(r.error){toast(r.error.message||'Something went wrong',true);return null}return r.data===null?true:r.data}catch(x){toast('Network problem. Try again.',true);return null}}
 async function act(fn,args,ok,ask){if(ask&&!confirm(ask))return;const r=await rpc(fn,args);if(r!==null){toast(ok||'Done');detail=null;await load()}}
-
-/* ---------- start-up and login ---------- */
-async function start(){
- if(!sb){view='login';loginErr='The service is not reachable. Refresh the page.';render();return}
- try{const s=await sb.auth.getSession();if(!s.data||!s.data.session){view='login';render();return}adminEmail=s.data.session.user.email||''}catch(x){view='login';render();return}
- await gate()}
-async function gate(){
- try{const a=await sb.auth.mfa.getAuthenticatorAssuranceLevel();
-  if(a.data&&a.data.currentLevel==='aal1'&&a.data.nextLevel==='aal2'){view='mfa';render();return}
-  mfaOn=!!(a.data&&a.data.currentLevel==='aal2')}catch(x){}
- const r=await sb.rpc('is_admin');
- if(r.error||r.data!==true){view='denied';render();return}
- view='app';await load()}
-async function doLogin(){const e=$('lg_e').value.trim(),p=$('lg_p').value;loginErr='';
- if(!e||!p){loginErr='Enter your email and password.';render();return}
- const r=await sb.auth.signInWithPassword({email:e,password:p});
- if(r.error){loginErr='Wrong email or password.';render();return}
- adminEmail=e;await gate()}
+/* ---------- start-up, login ---------- */
+async function start(){if(!sb){view='login';loginErr='The service is not reachable. Refresh the page.';render();return}
+ try{const s=await sb.auth.getSession();if(!s.data||!s.data.session){view='login';render();return}adminEmail=s.data.session.user.email||''}catch(x){view='login';render();return}await gate()}
+async function gate(){try{const a=await sb.auth.mfa.getAuthenticatorAssuranceLevel();if(a.data&&a.data.currentLevel==='aal1'&&a.data.nextLevel==='aal2'){view='mfa';render();return}mfaOn=!!(a.data&&a.data.currentLevel==='aal2')}catch(x){}
+ const r=await sb.rpc('is_admin');if(r.error||r.data!==true){view='denied';render();return}view='app';await loadContent();await load()}
+async function doLogin(){const e=$('lg_e').value.trim(),p=$('lg_p').value;loginErr='';if(!e||!p){loginErr='Enter your email and password.';render();return}
+ const r=await sb.auth.signInWithPassword({email:e,password:p});if(r.error){loginErr='Wrong email or password.';render();return}adminEmail=e;await gate()}
 async function doMfa(){const code=$('mf_c').value.trim();loginErr='';
- try{const f=await sb.auth.mfa.listFactors();const fac=f.data&&f.data.totp&&f.data.totp[0];
-  if(!fac){loginErr='No authenticator found for this account.';render();return}
+ try{const f=await sb.auth.mfa.listFactors(),fac=f.data&&f.data.totp&&f.data.totp[0];if(!fac){loginErr='No authenticator found for this account.';render();return}
   const ch=await sb.auth.mfa.challenge({factorId:fac.id});if(ch.error){loginErr=ch.error.message;render();return}
-  const v=await sb.auth.mfa.verify({factorId:fac.id,challengeId:ch.data.id,code});
-  if(v.error){loginErr='That code is wrong or expired. Try the new code.';render();return}
-  await gate()}catch(x){loginErr='Could not verify the code. Try again.';render()}}
+  const v=await sb.auth.mfa.verify({factorId:fac.id,challengeId:ch.data.id,code});if(v.error){loginErr='That code is wrong or expired. Try the new code.';render();return}await gate()}catch(x){loginErr='Could not verify the code. Try again.';render()}}
 async function doLogout(){try{await sb.auth.signOut()}catch(x){}view='login';data=null;ov=null;detail=null;render()}
-
-/* ---------- loading data ---------- */
-async function load(){if(view!=='app')return;busy=true;render();
- const o=await rpc('admin_overview');if(o&&o!==true)ov=o;
- data=null;
- if(tab==='sites')data=await rpc('admin_list_sites',{p_filter:filt.sites});
- else if(tab==='topups')data=await rpc('admin_list_topups',{p_status:filt.topups});
- else if(tab==='payouts')data=await rpc('admin_list_payouts',{p_status:filt.payouts});
- else if(tab==='orders')data=await rpc('admin_list_orders',{p_filter:filt.orders});
- else if(tab==='users')data=await rpc('admin_list_users',{p_q:qs.users});
- else if(tab==='ledger')data=await rpc('admin_list_ledger',{p_q:qs.ledger});
- else if(tab==='log')data=await rpc('admin_list_log');
+async function loadContent(){try{const r=await sb.from('site_content').select('key,value');const o={};(r.data||[]).forEach(x=>o[x.key]=x.value);AC=merge(window.GP_DEFAULTS,o)}catch(e){}W=clone(AC)}
+/* ---------- data ---------- */
+async function load(){if(view!=='app')return;busy=true;render();const o=await rpc('admin_overview');if(o&&o!==true)ov=o;data=null;
+ if(tab==='sites')data=await rpc('admin_list_sites',{p_filter:filt.sites});else if(tab==='topups')data=await rpc('admin_list_topups',{p_status:filt.topups});
+ else if(tab==='payouts')data=await rpc('admin_list_payouts',{p_status:filt.payouts});else if(tab==='orders')data=await rpc('admin_list_orders',{p_filter:filt.orders});
+ else if(tab==='users')data=await rpc('admin_list_users',{p_q:qs.users});else if(tab==='ledger')data=await rpc('admin_list_ledger',{p_q:qs.ledger});
+ else if(tab==='promos')data=await rpc('admin_list_promos');else if(tab==='log')data=await rpc('admin_list_log');
  else if(tab==='settings'){const s=await rpc('admin_get_settings');settingsData=(s&&s!==true)?s:{}}
  busy=false;render()}
-
-/* ---------- views ---------- */
-const tbl=(head,rows)=>rows.length?`<div class="tw"><table><thead><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'<div class="card m">Nothing here.</div>';
-const sel=(id,val,opts)=>`<select id="${id}" data-filter="${id}">${opts.map(o=>`<option value="${o[0]}" ${o[0]===val?'selected':''}>${o[1]}</option>`).join('')}</select>`;
-const pill=(t,k)=>`<span class="pill ${k||''}">${E(t)}</span>`;
-const btn=(label,doo,attrs,cls)=>`<button class="btn s ${cls||''}" data-do="${doo}" ${attrs||''}>${label}</button>`;
+/* ---------- helpers ---------- */
 const list=a=>Array.isArray(a)?a:[];
-
-function vOverview(){if(!ov)return '<div class="card m">Loading…</div>';
- const st=(n,l)=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`;
- const todo=[];
- if(ov.sites_pending>0)todo.push(`<li><a href="#" data-do="tab" data-v="sites">${ov.sites_pending} website(s) waiting for approval</a></li>`);
- if(ov.topups_pending>0)todo.push(`<li><a href="#" data-do="tab" data-v="topups">${ov.topups_pending} top-up(s) to confirm (${M(ov.topups_pending_amount)})</a></li>`);
- if(ov.payouts_pending>0)todo.push(`<li><a href="#" data-do="tab" data-v="payouts">${ov.payouts_pending} payout(s) to send (${M(ov.payouts_pending_amount)})</a></li>`);
- if(ov.issues_open>0)todo.push(`<li><a href="#" data-do="tab" data-v="orders" data-f="issues">${ov.issues_open} order(s) with an open problem</a></li>`);
- return `<h2>Overview</h2><div class="card"><h3>Needs your attention</h3>${todo.length?`<ul>${todo.join('')}</ul>`:'<p class="m">Nothing is waiting. All clear.</p>'}</div>
- <div class="grid">${st(ov.users,'Users')}${st(ov.buyers,'Buyers')}${st(ov.sellers,'Publishers')}${st(ov.sites_live,'Live websites')}${st(ov.orders_total,'Orders in total')}${st(ov.orders_open,'Orders in progress')}</div>
- <div class="grid">${st(M(ov.escrow),'Held in escrow now')}${st(M(ov.wallets),'Total in user wallets')}${st(M(ov.revenue),'Platform fees earned (completed orders)')}</div>
- <p class="m sm">Money owed to users is the sum of all wallets plus escrow. Keep at least this much in your PayPal and USDT accounts combined.</p>`}
-
-function vSites(){const rows=list(data).map(s=>[
- `<b>${E(s.domain)}</b><br><span class="m sm">${E(s.niche||'')} · ${E(s.language||'')} · ${E(s.country||'')}</span>`,
- E(s.owner_email||''),`DR ${s.dr}<br><span class="m sm">${Number(s.traffic).toLocaleString()} visits</span>`,
- M(s.price)+`<br><span class="m sm">${s.delivery_hours} h</span>`,
- (s.approved?pill('Live','ok'):pill('Pending','wn'))+(s.check_requested&&!s.approved?'<br>'+pill('Check requested','er'):''),
- `<span class="mono sm">${E(s.verify_code||'')}</span>`,D(s.created_at),
- `<div class="row" style="margin:0">${s.approved?btn('Hide','siteok',`data-id="${E(s.id)}" data-v="0"`,'g'):btn('Approve','siteok',`data-id="${E(s.id)}" data-v="1"`,'k')}${btn('Edit','siteedit',`data-i="${E(s.id)}"`,'g')}${btn('Delete','sitedel',`data-id="${E(s.id)}" data-n="${E(s.domain)}"`,'r')}</div>`]);
- return `<h2>Websites</h2><div class="row">${sel('f_sites',filt.sites,[['pending','Waiting for approval'],['live','Live'],['all','All']])}</div>
- ${tbl(['Website','Owner','Quality','Price','Status','Code','Added','Actions'],rows)}
- <p class="m sm">Before approving: open the website, and check that the verification code above is on it (or that you trust the owner).</p>`}
-
-function vTopups(){const rows=list(data).map(t=>[
- '#'+t.id,`${E(t.name||'')} <span class="m sm">@${E(t.username||'')}</span><br><span class="m sm">${E(t.email||'')}</span>`,'<b>'+M(t.amount)+'</b>',E(ML[t.method]||t.method),
- `<span class="mono sm">${E(t.reference)}</span>`,t.slip_path?btn('View slip','slip',`data-p="${E(t.slip_path)}"`,'g'):'<span class="m sm">none</span>',
- pill(t.status==='pending'?'Waiting':t.status==='approved'?'Credited':'Rejected',t.status==='approved'?'ok':t.status==='pending'?'wn':'er'),D(t.created_at),
+const tbl=(h,rows)=>rows.length?`<div class="tw"><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'<div class="card m">Nothing here.</div>';
+const sel=(id,val,o)=>`<select data-filter="${id}">${o.map(x=>`<option value="${x[0]}" ${x[0]===val?'selected':''}>${x[1]}</option>`).join('')}</select>`;
+const pill=(t,k)=>`<span class="pill ${k||''}">${E(t)}</span>`;
+const btn=(l,d,a,c)=>`<button class="btn s ${c||''}" data-do="${d}" ${a||''}>${l}</button>`;
+const who=(n,u,e)=>`${E(n||'')} <span class="m sm">@${E(u||'')}</span><br><span class="m sm">${E(e||'')}</span>`;
+/* ---------- views ---------- */
+function vOv(){if(!ov)return '<div class="card m">Loading…</div>';const st=(n,l)=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`,t=[];
+ if(ov.sites_pending>0)t.push(`<li><a href="#" data-do="tab" data-v="sites">${ov.sites_pending} website(s) waiting for review</a></li>`);if(ov.topups_pending>0)t.push(`<li><a href="#" data-do="tab" data-v="topups">${ov.topups_pending} top-up(s) to confirm (${M(ov.topups_pending_amount)})</a></li>`);
+ if(ov.payouts_pending>0)t.push(`<li><a href="#" data-do="tab" data-v="payouts">${ov.payouts_pending} payout(s) to send (${M(ov.payouts_pending_amount)})</a></li>`);if(ov.issues_open>0)t.push(`<li><a href="#" data-do="tab" data-v="orders" data-f="issues">${ov.issues_open} order(s) with an open problem</a></li>`);
+ return `<h2>Overview</h2><div class="card"><h3>Needs your attention</h3>${t.length?`<ul>${t.join('')}</ul>`:'<p class="m">Nothing is waiting. All clear.</p>'}</div><div class="grid">${st(ov.users,'Users')}${st(ov.buyers,'Buyers')}${st(ov.sellers,'Publishers')}${st(ov.sites_live,'Live websites')}${st(ov.orders_total,'Orders in total')}${st(ov.orders_open,'Orders in progress')}</div>
+ <div class="grid">${st(M(ov.escrow),'Held in escrow now')}${st(M(ov.wallets),'Total in user wallets')}${st(M(ov.revenue),'Service fees earned (completed orders, after promo discounts)')}</div><p class="m sm">Money owed to users is all wallets plus escrow. Keep at least this much available in your PayPal, USDT and bank accounts.</p>`}
+function vSites(){const rows=list(data).map(s=>[`<b>${E(s.domain)}</b><br><span class="m sm">${E(s.niche)} · ${E(s.country)} · ${E(s.language)}</span><br><span class="m sm">${who('',s.owner_username,s.owner_email)}</span>`,
+ `DR ${s.dr} · DA ${s.da==null?'-':s.da}<br><span class="m sm">Spam ${s.spam_score==null?'-':s.spam_score}% · age ${s.age_months==null?'-':s.age_months} mo<br>${Number(s.traffic).toLocaleString()} visits · ${s.indexed_pages==null?'-':s.indexed_pages} indexed</span>`,
+ `${M(s.price)}<br><span class="m sm">${Math.round(s.delivery_hours/24)} day(s) · ${s.max_links} link(s) · ${s.max_words} words<br>${s.writes_content?'writes +'+M(s.write_price):'does not write'}${Number(s.link_insert_price)>0?' · insert '+M(s.link_insert_price):''}</span>`,
+ `<details><summary>View</summary><div class="sm">${Object.keys(s.topic_prices||{}).length?'<b>Topic prices:</b> '+Object.keys(s.topic_prices).map(k=>(TOPN[k]||k)+' '+M(s.topic_prices[k])).join(', ')+'<br>':''}<b>Samples:</b> ${list(s.examples).map(u=>`<a href="${E(u)}" target="_blank" rel="noopener noreferrer nofollow">${E(u.replace(/^https?:\/\//,'').slice(0,34))}</a>`).join(', ')||'none'}${s.special_req?'<br><b>Requirements:</b> '+E(s.special_req):''}</div></details>`,
+ (s.approved?pill('Live','ok'):s.rejected_reason?pill('Rejected','er'):pill('Pending','wn'))+(s.featured?'<br>'+pill('On homepage','wn'):'')+(s.check_requested&&!s.approved&&!s.rejected_reason?'<br>'+pill('Check requested','er'):'')+(s.rejected_reason?`<br><span class="m sm">${E(s.rejected_reason)}</span>`:''),
+ `<span class="mono sm">${E(s.verify_code||'')}</span>`,
+ `<div class="row" style="margin:0">${s.approved?btn('Hide','siterev',`data-id="${E(s.id)}" data-v="0"`,'g'):btn('Approve','siterev',`data-id="${E(s.id)}" data-v="1"`,'k')}${!s.approved&&!s.rejected_reason?btn('Reject','siterev',`data-id="${E(s.id)}" data-v="0"`,'r'):''}${s.approved?btn(s.featured?'Remove from homepage':'Show on homepage','feat',`data-id="${E(s.id)}" data-v="${s.featured?0:1}"`,'g'):''}${btn('Edit','siteedit',`data-i="${E(s.id)}"`,'g')}${btn('Delete','sitedel',`data-id="${E(s.id)}" data-n="${E(s.domain)}"`,'r')}</div>`]);
+ return `<h2>Websites</h2><div class="row">${sel('sites',filt.sites,[['pending','Waiting for review'],['live','Live'],['rejected','Rejected'],['all','All']])}</div>${tbl(['Website','Quality','Prices','Details','Status','Code','Actions'],rows)}<p class="m sm">Before approving: open the website, check the numbers (DR, DA, spam score, traffic, indexed pages), look at the sample posts, and check that the verification code is on the site or that you trust the owner. “Show on homepage” puts the site (with a hidden name) in the homepage preview table.</p>`}
+function vTopups(){const rows=list(data).map(t=>['#'+t.id,who(t.name,t.username,t.email),'<b>'+M(t.amount)+'</b>',E(ML[t.method]||t.method),`<span class="mono sm">${E(t.reference)}</span>`,t.slip_path?btn('View slip','slip',`data-p="${E(t.slip_path)}"`,'g'):'<span class="m sm">none</span>',pill(t.status==='pending'?'Waiting':t.status==='approved'?'Credited':'Rejected',t.status==='approved'?'ok':t.status==='pending'?'wn':'er'),D(t.created_at),
  t.status==='pending'?`<div class="row" style="margin:0">${btn('Confirm','topup',`data-id="${t.id}" data-v="1" data-a="${t.amount}" data-e="${E(t.email||'')}"`,'k')}${btn('Reject','topup',`data-id="${t.id}" data-v="0" data-a="${t.amount}" data-e="${E(t.email||'')}"`,'r')}</div>`:'']);
- return `<h2>Top-ups</h2><div class="row">${sel('f_topups',filt.topups,[['pending','Waiting'],['approved','Credited'],['rejected','Rejected'],['all','All']])}</div>
- ${tbl(['#','User','Amount','Method','Reference','Slip','Status','Sent','Actions'],rows)}
- <p class="m sm">Press Confirm only after you have seen the payment arrive (PayPal shown as completed, the bank or wallet balance, or the blockchain) for the same amount. For bank, JazzCash and Easypaisa the user pays in PKR: compare with the USD amount using your rate. Open the slip picture to check the details. Confirm adds the money to the user's wallet at once.</p>`}
-
-function vPayouts(){const rows=list(data).map(t=>[
- '#'+t.id,`${E(t.name||'')}<br><span class="m sm">${E(t.email||'')}</span>`,'<b>'+M(t.amount)+'</b>',E(t.method),
- `<span class="mono sm">${E(t.destination)}</span>${t.pay_holder?`<br><span class="m sm">${E(t.pay_holder)}</span>`:''}`,
- pill(t.status==='pending'?'To send':t.status==='paid'?'Paid':'Rejected',t.status==='paid'?'ok':t.status==='pending'?'wn':'er'),D(t.created_at),
- t.status==='pending'?`<div class="row" style="margin:0">${btn('Mark as paid','payout',`data-id="${t.id}" data-v="1" data-a="${t.amount}"`,'k')}${btn('Reject','payout',`data-id="${t.id}" data-v="0" data-a="${t.amount}"`,'r')}</div>`:'']);
- return `<h2>Payouts</h2><div class="row">${sel('f_payouts',filt.payouts,[['pending','To send'],['paid','Paid'],['rejected','Rejected'],['all','All']])}</div>
- ${tbl(['#','Publisher','Amount','Method','Send to','Status','Asked','Actions'],rows)}
- <p class="m sm">Send the money first (copy the address or email above), then press Mark as paid. Reject returns the amount to the publisher's wallet.</p>`}
-
-function vOrders(){
- if(detail)return vDetail();
- const rows=list(data).map(o=>[
- '#'+o.id,E(o.domain),`<span class="sm">@${E(o.buyer_username||'')}<br>${E(o.buyer_email||'')}</span>`,`<span class="sm">@${E(o.seller_username||'')}<br>${E(o.seller_email||'')}</span>`,
- E(STAGE[o.stage]||o.stage)+(o.issue_open?'<br>'+pill('Problem: '+(o.issue_type||'open'),'er'):''),M(o.base*1.1)+`<br><span class="m sm">publisher ${M(o.base*0.9)}</span>`,
- o.stage<4?`<span class="sm">due ${D(o.deadline)}</span>`:o.stage===4?`<span class="sm">auto-release ${D(o.release_at)}</span>`:'',btn('Open','order',`data-id="${o.id}"`,'g')]);
- return `<h2>Orders</h2><div class="row">${sel('f_orders',filt.orders,[['open','In progress'],['issues','With open problem'],['done','Completed'],['refunded','Refunded'],['all','All']])}</div>
- ${tbl(['#','Website','Buyer','Publisher','Stage','Buyer paid','Time','Details'],rows)}`}
-function vDetail(){const o=detail.order||{},ms=list(detail.messages);
- return `<div class="row"><button class="btn s g" data-do="back">← Back to orders</button></div>
- <div class="card"><h2>Order #${o.id} · ${E(o.domain)}</h2>
- <p><b>Stage:</b> ${E(STAGE[o.stage]||o.stage)} ${o.issue_open?pill('Open problem: '+E(o.issue_type||''),'er'):''}</p>
- <p><b>Buyer:</b> ${E(o.buyer_email||'')} &nbsp; <b>Publisher:</b> ${E(o.seller_email||'')}</p>
- <p><b>Buyer paid:</b> ${M(o.base*1.1)} &nbsp; <b>Publisher gets:</b> ${M(o.base*0.9)} &nbsp; <b>Fees:</b> ${M(o.base*0.2)}</p>
- <p><b>Article by:</b> ${E(o.writer)} &nbsp; <b>Placed:</b> ${D(o.created_at)} &nbsp; <b>Deadline:</b> ${D(o.deadline)} &nbsp; <b>Auto-release:</b> ${D(o.release_at)}</p>
- ${o.link?`<p><b>Delivered link:</b> <a href="${E(o.link)}" target="_blank" rel="noopener noreferrer nofollow">${E(o.link)}</a></p>`:''}
- ${o.issue_msg?`<p><b>Buyer's complaint:</b> ${E(o.issue_msg)}</p>`:''}
+ return `<h2>Top-ups</h2><div class="row">${sel('topups',filt.topups,[['pending','Waiting'],['approved','Credited'],['rejected','Rejected'],['all','All']])}</div>${tbl(['#','User','Amount','Method','Reference','Slip','Status','Sent','Actions'],rows)}<p class="m sm">Press Confirm only after the money arrived (PayPal shown as completed, the bank or wallet balance, or the blockchain) for the same amount. Open the slip picture to compare the details. For bank, JazzCash and Easypaisa the user pays in rupees: compare with your rate. Confirm adds the money to the wallet at once.</p>`}
+function vPayouts(){const rows=list(data).map(t=>['#'+t.id,who(t.name,t.username,t.email),M(t.amount),Number(t.fee)>0?'-'+M(t.fee):'-','<b>'+M(t.net)+'</b>',E(t.method),`<span class="mono sm">${E(t.destination)}</span>${t.pay_holder?`<br><span class="m sm">${E(t.pay_holder)}</span>`:''}`,pill(t.status==='pending'?'To send':t.status==='paid'?'Paid':'Rejected',t.status==='paid'?'ok':t.status==='pending'?'wn':'er'),D(t.created_at),
+ t.status==='pending'?`<div class="row" style="margin:0">${btn('Mark as paid','payout',`data-id="${t.id}" data-v="1" data-a="${t.net}"`,'k')}${btn('Reject','payout',`data-id="${t.id}" data-v="0" data-a="${t.amount}"`,'r')}</div>`:'']);
+ return `<h2>Payouts</h2><div class="row">${sel('payouts',filt.payouts,[['pending','To send'],['paid','Paid'],['rejected','Rejected'],['all','All']])}</div>${tbl(['#','Publisher','Requested','PayPal fee (10%)','Send this amount','Method','Send to','Status','Asked','Actions'],rows)}<p class="m sm">Send the amount in the “Send this amount” column, then press Mark as paid. Reject returns the full requested amount to the publisher’s wallet.</p>`}
+function vOrders(){if(detail)return vDetail();const rows=list(data).map(o=>['#'+o.id,E(o.domain),`<span class="sm">@${E(o.buyer_username||'')}<br>${E(o.buyer_email||'')}</span>`,`<span class="sm">@${E(o.seller_username||'')}<br>${E(o.seller_email||'')}</span>`,E(STAGE[o.stage]||o.stage)+(o.issue_open?'<br>'+pill('Problem: '+(o.issue_type||'open'),'er'):''),M(o.paid||o.base*1.2)+`<br><span class="m sm">publisher ${M(o.base)}</span>`,o.stage<4?`<span class="sm">due ${D(o.deadline)}</span>`:o.stage===4?`<span class="sm">auto-release ${D(o.release_at)}</span>`:'',btn('Open','order',`data-id="${o.id}"`,'g')]);
+ return `<h2>Orders</h2><div class="row">${sel('orders',filt.orders,[['open','In progress'],['issues','With open problem'],['done','Completed'],['refunded','Refunded or rejected'],['all','All']])}</div>${tbl(['#','Website','Buyer','Publisher','Stage','Buyer paid','Time','Details'],rows)}`}
+function vDetail(){const o=detail.order||{},ms=list(detail.messages),kv=(k,v)=>v?`<p><b>${k}:</b> ${v}</p>`:'';
+ return `<div class="row"><button class="btn s g" data-do="back">← Back to orders</button></div><div class="card"><h2>Order #${o.id} · ${E(o.domain)}</h2><p><b>Stage:</b> ${E(STAGE[o.stage]||o.stage)} ${o.issue_open?pill('Open problem: '+E(o.issue_type||''),'er'):''}</p>
+ <p><b>Buyer:</b> ${E(o.buyer_email||'')} (@${E(o.buyer_username||'')}) &nbsp; <b>Publisher:</b> ${E(o.seller_email||'')} (@${E(o.seller_username||'')})</p>
+ <p><b>Buyer paid:</b> ${M(o.paid||o.base*1.2)} &nbsp; <b>Publisher gets:</b> ${M(o.base)} &nbsp; <b>Service fee:</b> ${M(o.fee||o.base*.2)} ${o.discount>0?'&nbsp; <b>Promo discount:</b> '+M(o.discount)+' ('+E(o.promo||'')+')':''}</p>
+ <p><b>Placed:</b> ${D(o.created_at)} &nbsp; <b>Deadline:</b> ${D(o.deadline)} &nbsp; <b>Delivered:</b> ${D(o.delivered_at)} &nbsp; <b>Auto-release:</b> ${D(o.release_at)}</p>
+ ${kv('Service',E(o.order_type==='insert'?'Link insert':'Content placement')+' · '+E(o.content_type))}${kv('Target URL',o.target_url?`<a href="${E(o.target_url)}" target="_blank" rel="noopener noreferrer nofollow">${E(o.target_url)}</a>`:'')}${kv('Anchor text',E(o.anchor_text))}${kv('Article source',E(o.article_source))}${kv('Article title',E(o.article_title))}${kv('Article link',o.article_link?`<a href="${E(o.article_link)}" target="_blank" rel="noopener noreferrer nofollow">${E(o.article_link)}</a>`:'')}${kv('Primary keyword',E(o.primary_kw))}${kv('Secondary keywords',E(o.secondary_kws))}${kv('Words required',o.words_required)}${kv('Summary',E(o.summary))}${kv('Instructions',E(o.instructions))}
+ ${kv('Delivered link',o.link?`<a href="${E(o.link)}" target="_blank" rel="noopener noreferrer nofollow">${E(o.link)}</a>`:'')}${kv('Buyer’s complaint',E(o.issue_msg))}${kv('Rejection reason',E(o.reject_reason))}
  <div class="row">${o.stage===4?btn('Release payment to publisher','release',`data-id="${o.id}"`,'k'):''}${o.stage>=1&&o.stage<=4?btn('Cancel and refund buyer','refund',`data-id="${o.id}"`,'r'):''}</div></div>
- ${o.article?`<div class="card"><h3>Article</h3><div class="msg">${E(o.article)}</div></div>`:''}
+ ${o.article?`<div class="card"><h3>Article text</h3><div class="msg">${E(String(o.article).replace(/<[^>]*>/g,' '))}</div></div>`:''}
  <div class="card"><h3>Messages (${ms.length})</h3>${ms.length?ms.map(x=>`<div class="msg"><b>${E(x.sender)}</b> · <span class="m sm">${D(x.created_at)}</span>\n${E(x.body)}</div>`).join(''):'<p class="m">No messages.</p>'}</div>`}
-
-function vUsers(){const rows=list(data).map(u=>[
- `<b>${E(u.name||'')}</b> <span class="m sm">@${E(u.username||'')}</span><br><span class="m sm">${E(u.email||'')}</span>`,
- pill(u.role,u.role==='admin'?'wn':'')+(u.suspended?' '+pill('Suspended','er'):''),E(u.country||''),
- `<b>${M(u.balance)}</b><br><span class="m sm">earned ${M(u.earnings)}</span>`,
- u.pay_method?`<span class="sm">${E(u.pay_method)}<br><span class="mono">${E(u.pay_account||'')}</span></span>`:'<span class="m sm">none</span>',D(u.created_at),
+function vUsers(){const rows=list(data).map(u=>[`<b>${E(u.name||'')}</b> <span class="m sm">@${E(u.username||'')}</span><br><span class="m sm">${E(u.email||'')}</span>`,pill(u.role,u.role==='admin'?'wn':'')+(u.suspended?' '+pill('Suspended','er'):''),E(u.country||''),`<b>${M(u.balance)}</b><br><span class="m sm">earned ${M(u.earnings)}</span>`,u.pay_method?`<span class="sm">${E(u.pay_method)}<br><span class="mono">${E(u.pay_account||'')}</span></span>`:'<span class="m sm">none</span>',D(u.created_at),
  `<div class="row" style="margin:0">${btn('Balance','adj',`data-id="${E(u.id)}" data-e="${E(u.email||'')}"`,'g')}${btn('Role','role',`data-id="${E(u.id)}" data-e="${E(u.email||'')}" data-r="${E(u.role)}"`,'g')}${btn(u.suspended?'Reactivate':'Suspend','susp',`data-id="${E(u.id)}" data-e="${E(u.email||'')}" data-v="${u.suspended?0:1}"`,u.suspended?'k':'r')}</div>`]);
- return `<h2>Users</h2><div class="row"><input id="q_users" placeholder="Search by email, name or username" value="${E(qs.users)}"><button class="btn s" data-do="search" data-t="users">Search</button></div>
- ${tbl(['User','Role','Country','Wallet','Payout details','Joined','Actions'],rows)}`}
-
-function vLedger(){const rows=list(data).map(l=>['#'+l.id,E(l.email||''),`<b style="color:var(${Number(l.amount)<0?'--er':'--ok'})">${Number(l.amount)<0?'-':'+'}${M(Math.abs(l.amount))}</b>`,E(l.kind),l.order_id?'#'+l.order_id:'',E(l.note||''),D(l.created_at)]);
- return `<h2>Ledger</h2><div class="row"><input id="q_ledger" placeholder="Filter by user email" value="${E(qs.ledger)}"><button class="btn s" data-do="search" data-t="ledger">Search</button></div>
- ${tbl(['#','User','Amount','Type','Order','Note','Time'],rows)}<p class="m sm">Every change to any wallet is recorded here. This list cannot be edited.</p>`}
-
-function vLog(){return `<h2>Activity log</h2>${tbl(['Time','Admin','Action','Details'],list(data).map(l=>[D(l.created_at),E(l.admin_email||''),E(l.action),E(l.detail||'')]))}<p class="m sm">Every admin action is recorded here.</p>`}
-
-function vSettings(){const s=settingsData||{};
- const f=(k,l,ph)=>`<label>${l}</label><input id="st_${k}" style="width:100%;max-width:560px" placeholder="${ph}" value="${E(s[k]||'')}">`;
- const ta=(k,l,ph)=>`<label>${l}</label><textarea id="st_${k}" rows="4" style="width:100%;max-width:560px" placeholder="${ph}">${E(s[k]||'')}</textarea>`;
- return `<h2>Settings</h2><div class="card"><h3>Where customers send their money</h3>
- <p class="m sm">These details are shown to customers on the Add funds page. A method with an empty box is shown as "not available yet". Double-check every character.</p>
+ return `<h2>Users</h2><div class="row"><input id="q_users" placeholder="Search by email, name or username" value="${E(qs.users)}"><button class="btn s" data-do="search" data-t="users">Search</button></div>${tbl(['User','Role','Country','Wallet','Payout details','Joined','Actions'],rows)}`}
+function vLedger(){const rows=list(data).map(l=>['#'+l.id,E(l.email||''),`<b style="color:${Number(l.amount)<0?'var(--rd)':'var(--gr)'}">${Number(l.amount)<0?'-':'+'}${M(Math.abs(l.amount))}</b>`,E(l.kind),l.order_id?'#'+l.order_id:'',E(l.note||''),D(l.created_at)]);
+ return `<h2>Ledger</h2><div class="row"><input id="q_ledger" placeholder="Filter by user email" value="${E(qs.ledger)}"><button class="btn s" data-do="search" data-t="ledger">Search</button></div>${tbl(['#','User','Amount','Type','Order','Note','Time'],rows)}<p class="m sm">Every change to any wallet is recorded here. It cannot be edited.</p>`}
+function vLog(){return `<h2>Activity log</h2>${tbl(['Time','Admin','Action','Details'],list(data).map(l=>[D(l.created_at),E(l.admin_email||''),E(l.action),E(l.detail||'')]))}`}
+function vPromos(){const rows=list(data).map(p=>[`<b class="mono">${E(p.code)}</b>`,p.percent+'%',pill(p.active?'Active':'Off',p.active?'ok':'er'),`${p.used_count}${p.max_uses?' / '+p.max_uses:''}`,p.expires_at?D(p.expires_at):'never',`<div class="row" style="margin:0">${btn(p.active?'Turn off':'Turn on','promotog',`data-c="${E(p.code)}" data-p="${p.percent}" data-a="${p.active?0:1}" data-m="${p.max_uses||''}" data-x="${E(p.expires_at||'')}"`,'g')}${btn('Delete','promodel',`data-c="${E(p.code)}"`,'r')}</div>`]);
+ return `<h2>Promo codes</h2><div class="card"><h3>New promo code</h3><div class="row"><div><label>Code</label><input id="pc_c" placeholder="WELCOME10" style="text-transform:uppercase"></div><div><label>Discount % (1–20)</label><input id="pc_p" type="number" min="1" max="20" style="width:110px"></div><div><label>Max uses (optional)</label><input id="pc_m" type="number" min="1" style="width:130px"></div><div><label>Expires (optional)</label><input id="pc_x" type="date"></div><button class="btn" data-do="promosave" style="margin-top:22px">Save code</button></div>
+ <p class="m sm">The discount is paid from the 20% service fee, so publishers always receive their full price. Customers type the code on the order page.</p></div>${tbl(['Code','Discount','Status','Used','Expires','Actions'],rows)}`}
+/* ---------- content editor ---------- */
+const GR={home:['hero','feature','trust','niches','services','steps','market','why','vetted','publishers','testimonials','faq','cta','footer'],pages:['terms','privacy','refunds'],rules:['listing'],site:['site']};
+const SEC={
+ hero:{t:'Hero (top of the home page)',f:[['eyebrow','Small line above the title'],['title','Title: first part'],['accent','Title: orange word'],['sub','Sub-headline','a'],['btn1','Primary button text'],['btn2','Secondary button text'],['badges','Three badges (one per line)','l'],['cardTitle','Floating card: title'],['cardSub','Floating card: small line']]},
+ feature:{t:'Feature section (right below the hero)',f:[['heading','Heading'],['items','Four points (one per line)','l'],['chip1','Image chip 1'],['chip2','Image chip 2']]},
+ trust:{t:'Trust strip (four boxes)',arr:1,lf:[['big','Big text'],['small','Small text']],blank:{big:'',small:''}},
+ niches:{t:'Niches',f:[['heading','Heading'],['intro','Intro','a'],['items','Niches (one per line)','l']]},
+ services:{t:'Services',f:[['eyebrow','Small line'],['heading','Heading'],['intro','Intro','a']],list:'items',lf:[['title','Title'],['text','Text','a'],['status','Status (type available or soon)']],blank:{title:'',text:'',status:'available'}},
+ steps:{t:'How an order works',f:[['heading','Heading'],['intro','Intro','a']],list:'items',lf:[['title','Title'],['text','Text','a']],blank:{title:'',text:''}},
+ market:{t:'Marketplace preview (the table on the home page)',f:[['heading','Heading'],['intro','Intro','a'],['note','Note under the table','a'],['btn','Button text'],['empty','Text when no website is shown','a']]},
+ why:{t:'Why buyers choose us',f:[['heading','Heading'],['intro','Intro','a']],list:'items',lf:[['title','Title'],['text','Text','a']],blank:{title:'',text:''}},
+ vetted:{t:'How we check a website',f:[['heading','Heading'],['intro','Intro','a'],['note','Note','a']],list:'checks',lf:[['title','Title'],['text','Text','a']],blank:{title:'',text:''}},
+ publishers:{t:'For publishers',f:[['heading','Heading'],['text','Text','a'],['note','Note about fees','a'],['btn','Button text']],list:'points',lf:[['title','Title'],['text','Text','a']],blank:{title:'',text:''}},
+ testimonials:{t:'Testimonials (add real ones only; the section is hidden while empty)',f:[['heading','Heading']],list:'items',lf:[['text','What they said','a'],['name','Name'],['role','Role']],blank:{text:'',name:'',role:''}},
+ faq:{t:'Frequently asked questions',f:[['heading','Heading']],list:'items',lf:[['q','Question'],['a','Answer','a']],blank:{q:'',a:''}},
+ cta:{t:'Final call to action',f:[['heading','Heading'],['text','Text','a'],['btn','Button text']]},
+ footer:{t:'Footer',f:[['text','Footer text','a']]},
+ listing:{t:'Add-website rules (shown before a publisher adds a website)',f:[['requirements','Requirements (one per line)','l'],['forbidden','Forbidden website types (one per line)','l'],['payments','Payments policy for publishers','a'],['evaluation','Evaluation note','a'],['taskRules','Rules shown on every order (what publishers can and cannot do)','a']]},
+ site:{t:'Site name, contact and search engines',root:'site',f:[['name','Website name'],['tagline','Tagline'],['supportEmail','Support email (shown to customers)'],['metaTitle','Search engine title (under 60 characters)'],['metaDescription','Search engine description (under 160 characters)','a']]},
+ terms:{t:'Terms of Service',legal:1},privacy:{t:'Privacy Policy',legal:1},refunds:{t:'Refund Policy',legal:1}};
+function getP(o,p){return p.split('.').reduce((a,k)=>a==null?a:a[k],o)}
+function setP(o,p,v){const k=p.split('.');let a=o;for(let i=0;i<k.length-1;i++){if(a[k[i]]==null)a[k[i]]={};a=a[k[i]]}a[k[k.length-1]]=v}
+const fld=(p,l,t,v)=>{const val=t==='l'?list(v).join('\n'):v==null?'':v;return `<label>${l}</label>${t==='a'||t==='l'?`<textarea data-p="${E(p)}" data-t="${t}" rows="${t==='l'?6:3}">${E(val)}</textarea>`:`<input class="full" data-p="${E(p)}" value="${E(val)}">`}`};
+function secV(id){const s=SEC[id],base=s.root?s.root:s.legal?'legal':'home.'+id;let h=`<div class="card"><h3>${s.t}</h3>`;
+ if(s.legal)return h+`<textarea data-p="legal.${id}" data-t="a" rows="22">${E(W.legal[id]||'')}</textarea><p class="m sm">Use “## Heading” for headings, a blank line between paragraphs, and “- ” for bullet points. “Last updated” is under Site settings below.</p></div>`;
+ if(s.arr){const a=list(getP(W,base));h+=a.map((x,i)=>`<div class="li">${s.lf.map(f=>fld(base+'.'+i+'.'+f[0],f[1],f[2],x[f[0]])).join('')}<div class="row" style="margin-top:8px">${btn('Remove','ldel',`data-p="${base}" data-i="${i}"`,'r')}</div></div>`).join('')+`<button class="btn s g" data-do="ladd" data-p="${base}" data-s="${id}">+ Add</button>`;return h+'</div>'}
+ h+=(s.f||[]).map(f=>fld(base+'.'+f[0],f[1],f[2],getP(W,base+'.'+f[0]))).join('');
+ if(s.list){const lp=base+'.'+s.list,a=list(getP(W,lp));h+=`<div class="sect"><b>List items</b></div>`+a.map((x,i)=>`<div class="li">${s.lf.map(f=>fld(lp+'.'+i+'.'+f[0],f[1],f[2],x[f[0]])).join('')}<div class="row" style="margin-top:8px">${btn('Remove','ldel',`data-p="${lp}" data-i="${i}"`,'r')}</div></div>`).join('')+`<button class="btn s g" data-do="ladd" data-p="${lp}" data-s="${id}">+ Add item</button>`}
+ return h+'</div>'}
+function vContent(){const g=GR;const names={home:'Home page',pages:'Legal pages',rules:'Publisher rules',site:'Site and contact'};
+ const ids=g[cgrp];return `<h2>Content</h2><p class="m">Everything customers read can be changed here. Press “Save” after editing a group. Changes appear on the website within a minute (refresh the website page).</p><div class="row">${Object.keys(names).map(k=>`<button class="btn s ${cgrp===k?'':'g'}" data-do="cgrp" data-v="${k}">${names[k]}</button>`).join('')}</div>
+ ${ids.map(secV).join('')}${cgrp==='pages'?`<div class="card"><label>“Last updated” date shown on legal pages</label><input data-p="legal.updated" value="${E(W.legal.updated||'')}"></div>`:''}<div class="row"><button class="btn" data-do="csave">Save ${names[cgrp]}</button><button class="btn g" data-do="creset">Undo my unsaved changes</button></div>`}
+function imgF(k,l){const v=W.design[k]||'';return `<div class="li"><b>${l}</b><img class="pv" src="${E(v)}" alt="" onerror="this.style.opacity=.3"><label>Image address</label><input class="full" data-p="design.${k}" value="${E(v)}"><div class="row" style="margin-top:8px"><input type="file" accept="image/jpeg,image/png,image/webp,image/svg+xml" data-up="${k}"><span class="m sm">JPG, PNG, WEBP or SVG, up to 3 MB. It uploads at once.</span></div></div>`}
+function vLook(){const d=W.design,col=(k,l)=>`<div><label>${l}</label><input type="color" data-p="design.${k}" value="${E(d[k]||'#000000')}"></div>`;
+ return `<h2>Appearance</h2><p class="m">Colors, fonts, logo and pictures. Press “Save appearance” to publish the changes.</p>
+ <div class="card"><h3>Colors</h3><div class="row">${col('primary','Main orange')}${col('primaryDark','Darker orange')}${col('dark','Dark (header, hero)')}${col('cream','Cream')}${col('offwhite','Page background')}${col('text','Text')}${col('muted','Soft text')}</div></div>
+ <div class="card"><h3>Style</h3><div class="row"><div><label>Font</label><select data-p="design.font">${['Inter','Poppins','Plus Jakarta Sans','System'].map(f=>`<option ${d.font===f?'selected':''}>${f}</option>`).join('')}</select></div><div><label>Corner roundness of cards (px)</label><input type="number" min="0" max="40" data-p="design.radius" data-n="1" value="${E(d.radius)}" style="width:110px"></div><div><label>Dark overlay on the hero picture (%)</label><input type="number" min="0" max="100" data-p="design.heroOverlay" data-n="1" value="${E(d.heroOverlay)}" style="width:110px"></div><div><label>Hero height on computers (px)</label><input type="number" min="420" max="900" data-p="design.heroHeight" data-n="1" value="${E(d.heroHeight)}" style="width:110px"></div></div></div>
+ <div class="card"><h3>Logo</h3><label>Logo text</label><input class="full" data-p="design.logoText" value="${E(d.logoText||'')}" style="max-width:300px"><p class="m sm">The first two letters are dark and the rest orange (GPlinx → GP + linx). Upload a picture only if you want your own logo image instead of the built-in mark.</p>${imgF('logoUrl','Logo picture (optional, square works best)')}</div>
+ <div class="card"><h3>Hero pictures</h3>${imgF('heroDesktop','Hero picture for computers (wide)')}${imgF('heroMobile','Hero picture for phones (tall)')}<label>Picture description (for search engines and screen readers)</label><input class="full" data-p="design.heroAlt" value="${E(d.heroAlt||'')}"></div>
+ <div class="card"><h3>Feature section pictures</h3>${imgF('featureDesktop','Feature picture for computers')}${imgF('featureMobile','Feature picture for phones')}<label>Picture description</label><input class="full" data-p="design.featureAlt" value="${E(d.featureAlt||'')}"></div>
+ <div class="row"><button class="btn" data-do="lsave">Save appearance</button><button class="btn g" data-do="creset">Undo my unsaved changes</button></div>`}
+function vSettings(){const s=settingsData||{};const f=(k,l,ph)=>`<label>${l}</label><input id="st_${k}" class="full" style="max-width:560px" placeholder="${ph}" value="${E(s[k]||'')}">`,ta=(k,l,ph)=>`<label>${l}</label><textarea id="st_${k}" rows="4" style="max-width:560px" placeholder="${ph}">${E(s[k]||'')}</textarea>`;
+ return `<h2>Settings</h2><div class="card"><h3>Where customers send their money</h3><p class="m sm">These details are shown on the Add funds page in large bold letters. A method with an empty box is shown as “not available yet”. Check every character twice.</p>
  <h3 style="margin-top:14px">PayPal and USDT</h3>${f('paypal_email','PayPal email','you@example.com')}${f('usdt_address','USDT wallet address','Your wallet address')}${f('usdt_network','USDT network (must match your wallet)','TRC20')}
- <h3 style="margin-top:14px">Bank accounts, JazzCash and Easypaisa</h3>
- ${ta('bank_pk_details','Pakistani bank account (shown to customers as written)','Bank name\nAccount title\nAccount number\nIBAN')}
- ${ta('bank_intl_details','International bank account (USD)','Bank name\nAccount holder\nIBAN / account number\nSWIFT / BIC')}
- ${ta('jazzcash_details','JazzCash account','Account title\nMobile number')}${ta('easypaisa_details','Easypaisa account','Account title\nMobile number')}
- ${f('pkr_rate','Rupee rate: how many PKR for 1 USD (used to show customers the amount to send)','Example: 280')}
- <h3 style="margin-top:14px">Card payments</h3>
- <p class="m sm">Cards cannot be taken by this site itself. Create a payment link with a card payment company that works for you, paste its secure https link here, and customers will see a "Pay by card" button. They pay there and send you the receipt number; you confirm the top-up as usual.</p>
- ${f('card_link','Card payment page link (must start with https://)','https://...')}
- ${ta('payment_note','Note shown to customers on the Add funds page (optional)','Example: Payments are confirmed within a few hours.')}
- <div class="row" style="margin-top:14px"><button class="btn" data-do="saveset">Save settings</button></div></div>
- <div class="card"><h3>Two-step verification (strongly recommended)</h3>
- ${mfaOn?'<p>'+pill('On','ok')+' This admin account needs a code from your authenticator app at every login.</p>'
- :enrollInfo?`<p>1) Open an authenticator app (Google Authenticator, Microsoft Authenticator or Authy) and scan this code, or type the key.</p><p><img alt="QR code" src="${E(enrollInfo.qr)}" width="180" height="180"></p><p class="mono sm">${E(enrollInfo.secret)}</p><p>2) Type the 6-digit code from the app:</p><div class="row"><input id="en_c" inputmode="numeric" maxlength="6" placeholder="123456"><button class="btn s" data-do="enrollok">Turn on</button></div>`
- :'<p>'+pill('Off','er')+' Anyone with your password could control all the money. Turn this on now.</p><button class="btn" data-do="enroll">Set up two-step verification</button>'}</div>`}
-
-function render(){const r=$('root');
- if(view==='boot'){return}
- if(view==='login'){r.innerHTML=`<div class="auth"><div class="card"><h2>GPlinx Admin</h2><p class="m sm">Administrators only.</p><label>Email</label><input id="lg_e" type="email" style="width:100%" autocomplete="username"><label>Password</label><input id="lg_p" type="password" style="width:100%" autocomplete="current-password"><p style="color:var(--er)">${E(loginErr)}</p><button class="btn" style="width:100%" data-do="login">Log in</button></div></div>`;return}
- if(view==='mfa'){r.innerHTML=`<div class="auth"><div class="card"><h2>Two-step verification</h2><p class="m sm">Type the 6-digit code from your authenticator app.</p><input id="mf_c" inputmode="numeric" maxlength="6" style="width:100%;font-size:22px;letter-spacing:.3em;text-align:center" placeholder="123456" autocomplete="one-time-code"><p style="color:var(--er)">${E(loginErr)}</p><button class="btn" style="width:100%" data-do="mfago">Verify</button><p><button class="btn g s" data-do="logout">Cancel</button></p></div></div>`;return}
+ <h3 style="margin-top:14px">Bank accounts, JazzCash and Easypaisa</h3>${ta('bank_pk_details','Pakistani bank account (shown as written)','Bank name\nAccount title\nAccount number\nIBAN')}${ta('bank_intl_details','International bank account (USD)','Bank name\nAccount holder\nIBAN / account number\nSWIFT / BIC')}${ta('jazzcash_details','JazzCash account','Account title\nMobile number')}${ta('easypaisa_details','Easypaisa account','Account title\nMobile number')}
+ ${f('pkr_rate','Rupee rate: how many PKR for 1 USD','Example: 280')}${ta('payment_note','Note shown to customers on the Add funds page (optional)','Example: Payments are confirmed within a few hours.')}<div class="row" style="margin-top:14px"><button class="btn" data-do="saveset">Save settings</button></div></div>
+ <div class="card"><h3>Two-step verification (strongly recommended)</h3>${mfaOn?'<p>'+pill('On','ok')+' This admin account needs a code from your authenticator app at every login.</p>':enrollInfo?`<p>1) Open an authenticator app and scan this code, or type the key.</p><p><img alt="QR code" src="${E(enrollInfo.qr)}" width="180" height="180"></p><p class="mono sm">${E(enrollInfo.secret)}</p><p>2) Type the 6-digit code:</p><div class="row"><input id="en_c" inputmode="numeric" maxlength="6" placeholder="123456"><button class="btn s" data-do="enrollok">Turn on</button></div>`:'<p>'+pill('Off','er')+' Anyone with your password could control all the money. Turn this on now.</p><button class="btn" data-do="enroll">Set up two-step verification</button>'}</div>`}
+function render(){const r=$('root');if(view==='boot')return;
+ if(view==='login'){r.innerHTML=`<div class="auth"><div class="card"><h2>GPlinx Admin</h2><p class="m sm">Administrators only.</p><label>Email</label><input id="lg_e" type="email" class="full" autocomplete="username"><label>Password</label><input id="lg_p" type="password" class="full" autocomplete="current-password"><p style="color:var(--rd)">${E(loginErr)}</p><button class="btn full" data-do="login">Log in</button></div></div>`;return}
+ if(view==='mfa'){r.innerHTML=`<div class="auth"><div class="card"><h2>Two-step verification</h2><p class="m sm">Type the 6-digit code from your authenticator app.</p><input id="mf_c" inputmode="numeric" maxlength="6" class="full" style="font-size:22px;letter-spacing:.3em;text-align:center" placeholder="123456" autocomplete="one-time-code"><p style="color:var(--rd)">${E(loginErr)}</p><button class="btn full" data-do="mfago">Verify</button><p><button class="btn g s" data-do="logout">Cancel</button></p></div></div>`;return}
  if(view==='denied'){r.innerHTML=`<div class="auth"><div class="card"><h2>No access</h2><p>This account is not an administrator.</p><button class="btn" data-do="logout">Log out</button></div></div>`;return}
- const badge=k=>{if(!ov)return '';const n={sites:ov.sites_pending,topups:ov.topups_pending,payouts:ov.payouts_pending,orders:ov.issues_open}[k];return n>0?`<span class="badge">${n}</span>`:''};
- let body='';
- if(busy&&tab!=='ov'&&data===null&&tab!=='settings')body='<div class="card m">Loading…</div>';
- else body={ov:vOverview,sites:vSites,topups:vTopups,payouts:vPayouts,orders:vOrders,users:vUsers,ledger:vLedger,settings:vSettings,log:vLog}[tab]();
- r.innerHTML=`<div class="top"><b>GP<span>linx</span> Admin</b><span><small>${E(adminEmail)}</small> &nbsp; <button class="btn s g" style="color:#fff;border-color:#ffffff55" data-do="refresh">Refresh</button> <button class="btn s g" style="color:#fff;border-color:#ffffff55" data-do="logout">Log out</button></span></div>
- <div class="wrap"><div class="side">${TABS.map(t=>`<button class="${tab===t[0]?'on':''}" data-do="tab" data-v="${t[0]}">${t[1]}${badge(t[0])}</button>`).join('')}</div><div>${body}</div></div>`}
-
+ const bd=k=>{if(!ov)return '';const n={sites:ov.sites_pending,topups:ov.topups_pending,payouts:ov.payouts_pending,orders:ov.issues_open}[k];return n>0?`<span class="badge">${n}</span>`:''};
+ let body;if(busy&&data===null&&!['ov','content','look','settings'].includes(tab))body='<div class="card m">Loading…</div>';else body={ov:vOv,sites:vSites,topups:vTopups,payouts:vPayouts,orders:vOrders,users:vUsers,ledger:vLedger,promos:vPromos,content:vContent,look:vLook,settings:vSettings,log:vLog}[tab]();
+ r.innerHTML=`<div class="top"><b>GP<span>linx</span> Admin</b><span><small>${E(adminEmail)}</small> &nbsp; <a class="btn s g" href="index.html" target="_blank" rel="noopener">View website</a> <button class="btn s g" data-do="refresh">Refresh</button> <button class="btn s g" data-do="logout">Log out</button></span></div><div class="wrap"><div class="side">${TABS.map(t=>`<button class="${tab===t[0]?'on':''}" data-do="tab" data-v="${t[0]}">${t[1]}${bd(t[0])}</button>`).join('')}</div><div>${body}</div></div>`}
 /* ---------- clicks ---------- */
-const DO={
- login:doLogin,mfago:doMfa,logout:doLogout,refresh:()=>load(),
- tab:d=>{tab=d.v;detail=null;if(d.f)filt.orders=d.f;load()},
- back:()=>{detail=null;render()},
- search:d=>{qs[d.t]=$('q_'+d.t).value.trim();load()},
- siteok:d=>act('admin_set_site_approved',{p_id:d.id,p_approved:d.v==='1'},d.v==='1'?'Website approved. It is now live.':'Website hidden from the marketplace.'),
+const DO={login:doLogin,mfago:doMfa,logout:doLogout,refresh:()=>load(),
+ tab:d=>{tab=d.v;detail=null;if(d.f)filt.orders=d.f;if(tab==='content'||tab==='look')W=clone(AC);load()},back:()=>{detail=null;render()},search:d=>{qs[d.t]=$('q_'+d.t).value.trim();load()},
+ siterev:d=>{if(d.v==='1')return act('admin_review_site',{p_id:d.id,p_approved:true,p_reason:null},'Website approved. It is now live.');const r=prompt('Reason for the publisher (they will see it):','');if(r===null)return;act('admin_review_site',{p_id:d.id,p_approved:false,p_reason:r},'Website not approved. The publisher was told the reason.')},
+ feat:d=>act('admin_set_featured',{p_id:d.id,p_flag:d.v==='1'},d.v==='1'?'The website now shows on the homepage (name hidden).':'Removed from the homepage.'),
  sitedel:d=>act('admin_delete_site',{p_id:d.id},'Website deleted.','Delete '+d.n+' permanently? Existing orders are kept.'),
- siteedit:d=>{const s=list(data).find(x=>x.id===d.i);if(!s)return;
-  const pr=prompt('Price in USD for '+s.domain,s.price);if(pr===null)return;
-  const dr=prompt('DR (0 to 100)',s.dr);if(dr===null)return;
-  const tr=prompt('Monthly traffic',s.traffic);if(tr===null)return;
-  const hr=prompt('Delivery time in hours',s.delivery_hours);if(hr===null)return;
-  const ni=prompt('Niche',s.niche||'');if(ni===null)return;
-  act('admin_update_site',{p_id:s.id,p_price:+pr,p_dr:Math.round(+dr),p_traffic:Math.round(+tr),p_hours:Math.round(+hr),p_niche:ni},'Website updated.')},
- topup:d=>act('admin_topup_decide',{p_id:+d.id,p_approve:d.v==='1'},d.v==='1'?'Top-up confirmed and credited.':'Top-up rejected.',d.v==='1'?`Confirm that you received ${M(d.a)} from ${d.e}? It will be added to their wallet now.`:`Reject this top-up of ${M(d.a)}?`),
- payout:d=>act('admin_payout_decide',{p_id:+d.id,p_paid:d.v==='1'},d.v==='1'?'Marked as paid.':'Payout rejected and returned to the wallet.',d.v==='1'?`Press OK only if you already sent ${M(d.a)}.`:`Reject this payout and return ${M(d.a)} to the publisher's wallet?`),
+ siteedit:d=>{const s=list(data).find(x=>x.id===d.i);if(!s)return;const a=[['price','Price in USD',s.price],['dr','DR',s.dr],['da','DA',s.da],['traffic','Monthly traffic',s.traffic],['delivery_hours','Delivery time in hours',s.delivery_hours],['niche','Niche',s.niche],['country','Country',s.country]],p={};for(const x of a){const v=prompt(x[1]+' for '+s.domain,x[2]==null?'':x[2]);if(v===null)return;p[x[0]]=String(v).trim()}act('admin_edit_site',{p_id:s.id,p},'Website updated.')},
+ topup:d=>act('admin_topup_decide',{p_id:+d.id,p_approve:d.v==='1'},d.v==='1'?'Top-up confirmed and credited.':'Top-up rejected.',d.v==='1'?`Confirm that you received $${d.a} from ${d.e}? It will be added to their wallet now.`:`Reject this top-up of $${d.a}?`),
  slip:async d=>{const w=window.open('','_blank');try{const r=await sb.storage.from('slips').createSignedUrl(d.p,300);if(r.error||!r.data){if(w)w.close();toast('Could not open the slip: '+(r.error?r.error.message:'unknown error'),true);return}if(w)w.location.href=r.data.signedUrl;else window.location.href=r.data.signedUrl}catch(x){if(w)w.close();toast('Could not open the slip.',true)}},
+ payout:d=>act('admin_payout_decide',{p_id:+d.id,p_paid:d.v==='1'},d.v==='1'?'Marked as paid.':'Payout rejected and returned to the wallet.',d.v==='1'?`Press OK only if you already sent $${d.a}.`:`Reject this payout and return $${d.a} to the publisher's wallet?`),
  order:async d=>{const r=await rpc('admin_order_detail',{p_id:+d.id});if(r&&r!==true){detail=r;render()}},
- release:d=>act('admin_release_order',{p_id:+d.id},'Payment released to the publisher.','Release the payment to the publisher now?'),
- refund:d=>act('admin_refund_order',{p_id:+d.id},'Order cancelled and the buyer was refunded.','Cancel this order and refund the buyer in full?'),
- adj:d=>{const a=prompt('Amount to add (use a minus sign to remove) for '+d.e+':','');if(a===null||a==='')return;const n=prompt('Reason (shown to the user and saved in the log):','');if(n===null)return;
-  act('admin_adjust_balance',{p_user:d.id,p_amount:+a,p_note:n},'Balance adjusted.',`Change ${d.e}'s wallet by ${M(+a)}?`)},
- role:d=>{const r=prompt('New role for '+d.e+' (buyer, seller or admin). Current: '+d.r,d.r);if(r===null)return;
-  act('admin_set_role',{p_user:d.id,p_role:r.trim().toLowerCase()},'Role changed.',`Change ${d.e} to ${r}?`)},
+ release:d=>act('admin_release_order',{p_id:+d.id},'Payment released to the publisher.','Release the payment to the publisher now?'),refund:d=>act('admin_refund_order',{p_id:+d.id},'Order cancelled and the buyer was refunded.','Cancel this order and refund the buyer in full?'),
+ adj:d=>{const a=prompt('Amount to add (use a minus sign to remove) for '+d.e+':','');if(a===null||a==='')return;const n=prompt('Reason (shown to the user and saved in the log):','');if(n===null)return;act('admin_adjust_balance',{p_user:d.id,p_amount:+a,p_note:n},'Balance adjusted.',`Change ${d.e}'s wallet by $${+a}?`)},
+ role:d=>{const r=prompt('New role for '+d.e+' (buyer, seller or admin). Current: '+d.r,d.r);if(r===null)return;act('admin_set_role',{p_user:d.id,p_role:r.trim().toLowerCase()},'Role changed.',`Change ${d.e} to ${r}?`)},
  susp:d=>act('admin_set_suspended',{p_user:d.id,p_flag:d.v==='1'},d.v==='1'?'Account suspended.':'Account reactivated.',d.v==='1'?`Suspend ${d.e}? They will not be able to order, top up, withdraw or list websites.`:null),
- saveset:async()=>{const cl=$('st_card_link').value.trim(),pr=$('st_pkr_rate').value.trim();if(cl&&!/^https:\/\//.test(cl)){toast('The card payment link must start with https://',true);return}if(pr&&!(Number(pr)>0)){toast('The rupee rate must be a number, for example 280',true);return}let ok=true;for(const k of KEYS){const r=await rpc('admin_set_setting',{p_key:k,p_value:$('st_'+k).value.trim()});if(r===null){ok=false;break}}if(ok){toast('Settings saved.');await load()}},
- enroll:async()=>{try{const r=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'GPlinx admin '+Date.now()});if(r.error){toast(r.error.message,true);return}
-   enrollInfo={id:r.data.id,qr:r.data.totp.qr_code,secret:r.data.totp.secret};render()}catch(x){toast('Could not start the setup.',true)}},
- enrollok:async()=>{const code=$('en_c').value.trim();if(!enrollInfo)return;try{const r=await sb.auth.mfa.challengeAndVerify({factorId:enrollInfo.id,code});
-   if(r.error){toast('Wrong code. Try again.',true);return}enrollInfo=null;mfaOn=true;toast('Two-step verification is now on.');render()}catch(x){toast('Could not verify the code.',true)}}
-};
+ promosave:()=>{const c=$('pc_c').value.trim(),p=+$('pc_p').value,m=$('pc_m').value,x=$('pc_x').value;act('admin_save_promo',{p_code:c,p_percent:p,p_active:true,p_max_uses:m?+m:null,p_expires:x?new Date(x+'T23:59:59').toISOString():null},'Promo code saved.')},
+ promotog:d=>act('admin_save_promo',{p_code:d.c,p_percent:+d.p,p_active:d.a==='1',p_max_uses:d.m?+d.m:null,p_expires:d.x||null},'Promo code updated.'),promodel:d=>act('admin_delete_promo',{p_code:d.c},'Promo code deleted.','Delete the code '+d.c+'?'),
+ saveset:async()=>{const cl=$('st_pkr_rate').value.trim();if(cl&&!(Number(cl)>0)){toast('The rupee rate must be a number, for example 280',true);return}let ok=true;for(const k of KEYS){const r=await rpc('admin_set_setting',{p_key:k,p_value:$('st_'+k).value.trim()});if(r===null){ok=false;break}}if(ok){toast('Settings saved.');await load()}},
+ cgrp:d=>{cgrp=d.v;render()},creset:()=>{W=clone(AC);toast('Unsaved changes undone.');render()},
+ ladd:d=>{const a=list(getP(W,d.p)).slice(),b=SEC[d.s].blank||{};a.push(clone(b));setP(W,d.p,a);render()},ldel:d=>{const a=list(getP(W,d.p)).slice();a.splice(+d.i,1);setP(W,d.p,a);render()},
+ csave:async()=>{const keys={home:['home'],pages:['legal'],rules:['home'],site:['site']}[cgrp];for(const k of keys){const r=await rpc('admin_set_content',{p_key:k,p_value:W[k]});if(r===null)return}AC=clone(W);toast('Saved. Refresh the website to see it.')},
+ lsave:async()=>{const r=await rpc('admin_set_content',{p_key:'design',p_value:W.design});if(r!==null){AC=clone(W);toast('Appearance saved. Refresh the website to see it.')}},
+ enroll:async()=>{try{const r=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'GPlinx admin '+Date.now()});if(r.error){toast(r.error.message,true);return}enrollInfo={id:r.data.id,qr:r.data.totp.qr_code,secret:r.data.totp.secret};render()}catch(x){toast('Could not start the setup.',true)}},
+ enrollok:async()=>{const code=$('en_c').value.trim();if(!enrollInfo)return;try{const r=await sb.auth.mfa.challengeAndVerify({factorId:enrollInfo.id,code});if(r.error){toast('Wrong code. Try again.',true);return}enrollInfo=null;mfaOn=true;toast('Two-step verification is now on.');render()}catch(x){toast('Could not verify the code.',true)}}};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-do]');if(!b)return;e.preventDefault();const f=DO[b.dataset.do];if(f)f(b.dataset)});
-document.addEventListener('change',e=>{const id=e.target.dataset&&e.target.dataset.filter;if(!id)return;filt[id.slice(2)]=e.target.value;load()});
-document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const id=e.target.id;
- if(id==='lg_e'||id==='lg_p')doLogin();else if(id==='mf_c')doMfa();else if(id==='q_users')DO.search({t:'users'});else if(id==='q_ledger')DO.search({t:'ledger'})});
+document.addEventListener('change',e=>{const t=e.target,d=t.dataset||{};
+ if(d.filter){filt[d.filter]=t.value;load();return}
+ if(d.up){const f=t.files[0];if(!f)return;if(f.size>3145728){toast('The picture is larger than 3 MB.',true);return}const ext=(f.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,''),name=d.up+'-'+Date.now()+'.'+ext;
+  sb.storage.from('site-assets').upload(name,f,{contentType:f.type,upsert:true}).then(r=>{if(r.error){toast('Upload failed: '+r.error.message,true);return}const u=sb.storage.from('site-assets').getPublicUrl(name).data.publicUrl;setP(W,'design.'+d.up,u);toast('Picture uploaded. Press “Save appearance” to publish it.');render()})}});
+document.addEventListener('input',e=>{const t=e.target,d=t.dataset||{};if(!d.p)return;let v=t.value;if(d.t==='l')v=v.split('\n').map(x=>x.trim()).filter(Boolean);else if(d.n)v=Number(v);setP(W,d.p,v)});
+document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const id=e.target.id;if(id==='lg_e'||id==='lg_p')doLogin();else if(id==='mf_c')doMfa();else if(id==='q_users')DO.search({t:'users'});else if(id==='q_ledger')DO.search({t:'ledger'})});
 start();
-</script>
-</body>
-</html>
+
+</script></body></html>
